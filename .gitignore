@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+*.FCBak
+
+# Product photos and shop screenshots from other sellers, kept local only
+Part Pictures and examples/
