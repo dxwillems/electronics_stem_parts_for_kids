@@ -114,6 +114,10 @@ It rewrites the `.FCStd`, the `.step` and the pictures next to the script. The s
 
 These modules are for low-voltage experiments only: batteries, small solar panels and current-limited bench supplies. Never connect them to mains voltage.
 
+## Licence
+
+The designs, scripts and documentation in this repository are © Dave Willems and licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, print, change and share them, also commercially, as long as you give credit and share your changes under the same licence. The full text is in [LICENSE](LICENSE).
+
 ---
 
 LEGO® is a trademark of the LEGO Group, which does not sponsor, authorise or endorse this project.
