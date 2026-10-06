@@ -16,7 +16,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 175.8 × 79.8 × 35.2 | yes, 22 × 10 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 | Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 42 × 59 × 34 | not yet | drawn, not yet test-printed |
-| Square coil, original small style | `Spoel_Electromagneet_Vierkant.FCStd`, `vierkante_spoel-Spoelkoker.step` | 35 × 40 × 9 | no | copy of the original part, small binding posts |
+| Square coil, original small style | `Spoel_Electromagneet_Vierkant.FCStd`, `vierkante_spoel-Spoelkoker.step` | 35 × 40 × 10 | no | bobbin only, same size as the original part, no banana sockets |
 
 The file names are Dutch: *lamphouder* = lamp holder, *zonnepaneel* = solar panel, *spoel* = coil, *houder* = holder, *bovenaanzicht* / *onderaanzicht* / *onderkant* = top view / bottom view / underside.
 
@@ -67,16 +67,18 @@ A square bobbin lying flat, with a terminal box beside it for the two sockets.
 
 ## Printing
 
-- Each module has a `.step` file of just the printable holder. The `.FCStd` files also contain dummy sockets, nuts, the panel or bulb base, and a piece of baseplate for checking the fit; do not print those.
+- Each module has a `.step` file of just the printable holder. The lamp holder also has `Lamphouder_E10-Pastest.step`, a 6 mm test slice for checking the LEGO fit. The `.FCStd` files also contain dummy sockets, nuts, the panel or bulb base, and a piece of baseplate for checking the fit; do not print those.
 - Lamp holder and both solar panel holders: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
 - Coil: print upright. The upper bobbin flange and the roof of the terminal box need support or bridging.
-- Any rigid filament works. The coil dissipates little power at sensible currents, but PLA softens around 60 °C, so do not leave a coil running at high current.
+- All parts are printed in Bambu Lab PLA Basic Blue, and the models and pictures use that colour (#0A2989). Any rigid filament works. The coil dissipates little power at sensible currents, but PLA softens around 60 °C, so do not leave a coil running at high current.
 
 ### LEGO fit
 
 The underside has a channel that grips the outer row of studs between the outer wall and an inner rib. The channel is 5.0 mm wide for 4.8 mm studs, 0.1 mm clearance per side, because printed slots usually come out slightly tight.
 
-This fit has only been checked in the CAD model against a drawn baseplate; it depends on your printer. Print the bottom 5 mm of a holder first as a test. If it is too loose or too tight, change `KLEM` at the top of the script (smaller is tighter) and re-run it.
+A first print of the lamp holder with that plain channel slid over the studs but did not hold. The lamp holder therefore now has a tighter channel (0.05 mm clearance per side) plus one small crush rib per stud on the inner wall, each squeezing 0.2 mm into the stud, so it should stay on a vertical LEGO wall. The solar panel holder still has the plain 5.0 mm channel.
+
+The fit depends on your printer. For the lamp holder, print `Lamphouder_E10-Pastest.step` first: it is only the bottom 6 mm and prints in minutes. If it is too loose or too tight, change `KLEMRIB_OVERMAAT` at the top of `lamphouder_e10.py` (larger is tighter) and re-run it. For the solar panel holder the value is `KLEM` (smaller is tighter).
 
 ## Measure before you print
 

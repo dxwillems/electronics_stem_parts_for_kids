@@ -8,6 +8,8 @@
 
 import os
 
+# Kleur van de geprinte delen in het model: Bambu PLA Basic Blue (#0A2989)
+
 import FreeCAD as App
 import Part
 from FreeCAD import Vector as V
@@ -17,7 +19,10 @@ LEGO = True             # False = gewone open onderkant met rechte wand
 NOP_STEEK = 8.0
 NOP_D = 4.8
 NOP_H = 1.7
-KLEM = 0.10             # extra ruimte per kant rond de nop; kleiner = strakker klemmen
+KLEM = 0.05             # ruimte per kant tussen nop en de vlakke sleufwanden
+KLEMRIB_OVERMAAT = 0.20 # zoveel knijpt elke klemrib in de nop; groter = vaster, 0 = geen ribben
+KLEMRIB_R = 0.6         # straal van de klemribben (verticale halve cilinders in de sleuf)
+KLEMRIB_INLOOP = 0.5    # schuine aanloop onderaan, zodat de noppen erin glijden
 BUITEN_SPELING = 0.1    # buitenwand ligt zoveel binnen het raster
 SLEUF_DIEPTE = NOP_H + 0.3
 BAND_H = 4.0            # hoogte van de klemrand onderin
@@ -75,6 +80,27 @@ def binnen(d, z0, z1):
     return vlak.extrude(V(0, 0, z1 - z0))
 
 
+def maak_klemribben():
+    """Een smalle rib per nop op de binnenwand van de sleuf; die vervormt en klemt de nop vast.
+    De hoeknoppen krijgen er geen: daar loopt de binnenwand niet langs."""
+    r, uitsteek = KLEMRIB_R, KLEM + KLEMRIB_OVERMAAT
+    plekken = []       # (x, y) van de ribas: uitsteek buiten de binnenwand, de rest erin
+    for i in range(1, NOPPEN_L - 1):
+        x = -HL + (i + 0.5) * NOP_STEEK
+        for sy in (-1, 1):
+            plekken.append((x, sy * (HB - SLEUF_BINNEN - (r - uitsteek))))
+    for j in range(1, NOPPEN_B - 1):
+        y = -HB + (j + 0.5) * NOP_STEEK
+        for sx in (-1, 1):
+            plekken.append((sx * (HL - SLEUF_BINNEN - (r - uitsteek)), y))
+    ribben = []
+    for x, y in plekken:
+        ribben.append(Part.makeCone(r - uitsteek, r, KLEMRIB_INLOOP, V(x, y, 0)))
+        ribben.append(Part.makeCylinder(r, SLEUF_DIEPTE - KLEMRIB_INLOOP + 0.2,
+                                        V(x, y, KLEMRIB_INLOOP)))
+    return ribben
+
+
 def maak_houder():
     blok = binnen(BUITEN_SPELING, 0, HOOGTE)
     ribben = [e for e in blok.Edges
@@ -93,6 +119,8 @@ def maak_houder():
             z += stap
         delen.append(binnen(WAND, z, HOOGTE - PLAAT))
         houder = blok.cut(sleuf.fuse(delen))
+        if KLEMRIB_OVERMAAT > 0:
+            houder = houder.fuse(maak_klemribben())
     else:
         houder = blok.cut(binnen(WAND, -1, HOOGTE - PLAAT))
 
@@ -166,7 +194,7 @@ def maak_moer(x):
 
 
 doc = App.newDocument("LamphouderE10")
-onderdelen = [("Houder", maak_houder(), (0.15, 0.85, 0.20)),
+onderdelen = [("Houder", maak_houder(), (0.04, 0.16, 0.54)),
               ("Fitting_E10", maak_fitting(), (0.78, 0.78, 0.80)),
               ("Bouwplaat_controle", maak_bouwplaat(), (0.75, 0.75, 0.75))]
 for naam, x, kleur in BUSSEN:
@@ -183,7 +211,11 @@ bb = doc.Houder.Shape.BoundBox
 print("Houder buitenmaten: %.1f x %.1f x %.1f mm" % (bb.XLength, bb.YLength, bb.ZLength))
 for obj in doc.Objects:
     if obj.Name != "Houder" and (LEGO or obj.Name != "Bouwplaat_controle"):
-        print("Overlap houder/%s: %.3f mm3" % (obj.Name, doc.Houder.Shape.common(obj.Shape).Volume))
+        overlap = doc.Houder.Shape.common(obj.Shape)
+        print("Overlap houder/%s: %.3f mm3" % (obj.Name, overlap.Volume))
+        if obj.Name == "Bouwplaat_controle":   # hier hoort alleen de klemoverlap van de ribben te zitten
+            print("  klemplekken: %d, grootste overlap per plek: %.4f mm3"
+                  % (len(overlap.Solids), max([v.Volume for v in overlap.Solids] or [0])))
 print("Vrije opening onderkant: %.1f x %.1f mm" % (2 * (HL - RIB_BINNEN), 2 * (HB - RIB_BINNEN)))
 print("Afstand bus-moer tot schroefnok: %.1f mm" % doc.Moer_rood.Shape.distToShape(
     Part.makeCylinder(NOK_D / 2, 10, V(SCHROEVEN[0], FITTING_Y, HOOGTE - 12)))[0])
@@ -191,6 +223,11 @@ print("Afstand bus-moer tot schroefnok: %.1f mm" % doc.Moer_rood.Shape.distToSha
 map_ = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
 doc.saveAs(os.path.join(map_, "Lamphouder_E10.FCStd"))
 Part.export([doc.Houder], os.path.join(map_, "Lamphouder_E10-Houder.step"))
+if LEGO:
+    # alleen de onderste 6 mm: snelle proefprint om de klemming op een bouwplaat te testen
+    proef = doc.Houder.Shape.common(doos(-HL, -HB, HL, HB, 0, 6.0))
+    Part.export([Part.show(proef, "Pastest")], os.path.join(map_, "Lamphouder_E10-Pastest.step"))
+    doc.removeObject("Pastest")
 
 if App.GuiUp:
     import FreeCADGui as Gui

@@ -5,6 +5,8 @@
 
 import os
 
+# Kleur van de geprinte delen in het model: Bambu PLA Basic Blue (#0A2989)
+
 import FreeCAD as App
 import Part
 from FreeCAD import Vector as V
@@ -121,7 +123,7 @@ def maak_moer(x):
 
 
 doc = App.newDocument("SpoelBananenbus")
-onderdelen = [("Spoelkoker", maak_spoelkoker(), (0.15, 0.85, 0.20)),
+onderdelen = [("Spoelkoker", maak_spoelkoker(), (0.04, 0.16, 0.54)),
               ("Koperwikkeling", maak_wikkeling(), (0.80, 0.50, 0.25))]
 for naam, x, kleur in BUSSEN:
     onderdelen.append(("Bus_" + naam, maak_bus(x), kleur))
