@@ -13,6 +13,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Module | Files | Size (mm) | LEGO base | Status |
 |---|---|---|---|---|
 | E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
+| 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 | Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
@@ -31,6 +32,20 @@ A square block with an E10 bulb base screwed on top and a red and a black banana
 - The bulb base is fixed from above with two small screws (2.9 mm self-tapping or M3, 6–8 mm long) into 2.5 mm pilot holes. Under each hole the top plate is thickened so the screw has 8 mm of material.
 - The slot under the bulb base leaves room for its rivet and lets both wires drop into the box. One wire goes to the solder tag (centre contact), the other to the bracket itself, for example under a screw head.
 - The block is square on purpose: the opening underneath is 45 × 45 mm, so you can reach the socket nuts and solder tags with your fingers.
+
+### 5 mm LED holder
+
+A box for a standard 5 mm LED with its series resistor, made to connect straight to a 5 V supply. The top shows the circuit between the two banana sockets: red (plus), resistor, LED, black (minus), with the resistor value printed under it.
+
+| View | Top |
+|---|---|
+| ![LED holder](Ledhouder_5mm.png) | ![Top view with circuit](Ledhouder_5mm_bovenaanzicht.png) |
+
+- The LED goes in from underneath through a 5.2 mm hole; its collar sits in a recess under the top plate, so the dome sticks out about 5 mm. A drop of glue behind it stops it being pushed back in.
+- The resistor lies on top, behind its symbol, with its legs through two 1.2 mm holes 10.16 mm apart (the usual pitch for a 1/4 W resistor). Solder the wires to the legs inside the box.
+- Resistor value for a red LED on 5 V: R = (5 V − 2.0 V) / I. 150 Ω gives 20 mA, the LED's rated maximum; **220 Ω** gives about 14 mA, still bright, and leaves margin for a supply slightly above 5 V or an LED with a lower forward voltage. The box says 220 Ω; change `WEERSTAND_TEKST` in `ledhouder.py` for another value or LED colour.
+- Wiring: red socket → resistor → long LED leg (anode); short LED leg (cathode) → black socket. The triangle in the symbol points the same way.
+- Both socket nuts sit straight above the open underside (77 × 29 mm).
 
 ### Solar panel holder
 
@@ -56,17 +71,18 @@ A square bobbin lying flat, with a terminal box beside it for the two sockets.
 
 ## Circuit symbols
 
-Each box has the schematic symbol of its part between the two banana sockets, inlaid flush in the top surface for printing in white: a circle with a cross for the lamp, a circle with a cell and two light arrows for the solar panel, and a row of bumps for the coil.
+Each box has the schematic symbol of its part between the two banana sockets, inlaid flush in the top surface for printing in white: a circle with a cross for the lamp, a resistor and a diode triangle with two arrows for the LED, a circle with a cell and two light arrows for the solar panel, and a row of bumps for the coil.
 
-| Lamp | Solar panel | Coil |
-|---|---|---|
-| ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil symbol](Spoel_Electromagneet_Bananenbus_bovenaanzicht.png) |
+| Lamp | LED | Solar panel | Coil |
+|---|---|---|---|
+| ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![LED symbol](Ledhouder_5mm_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil symbol](Spoel_Electromagneet_Bananenbus_bovenaanzicht.png) |
 
 - The symbol is 0.4 mm deep, two layers at 0.2 mm layer height. Change `SYMBOOL_DIEPTE` in the script for another layer height, or set it to 0 for no symbol.
-- The `.step` file of each of these three modules contains two bodies: the holder and the symbol. In the slicer, load it as one object with two parts and give the symbol part the white filament. Printed in one colour the two simply merge into a flat top.
+- Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio. It holds one object with two parts (holder on filament 4 = blue, symbol on filament 2 = white; change `FILAMENT_HOUDER` and `FILAMENT_SYMBOOL` in `maak_3mf.py` for another AMS layout), already turned into its print position. Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
+- The `.step` file of each of these modules also contains both bodies, for use in other software. `maak_3mf.py` regenerates the `-Print.3mf` files after a model script has been re-run.
 - The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed. The coil prints upright, so its symbol is in the last two layers.
 - The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. This has not been test-printed.
-- The shapes come from `symbolen.py`, which the three scripts import; keep it in the same folder. The plain solar panel holder has no symbol.
+- The shapes come from `symbolen.py`, which the model scripts import; keep it in the same folder. The plain solar panel holder has no symbol.
 
 ## Parts to buy
 
@@ -74,6 +90,7 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 |---|---|---|
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
+| Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
 | 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | – |
 | Screws 2.9 mm self-tapping or M3, 6–8 mm | lamp holder, two | – |

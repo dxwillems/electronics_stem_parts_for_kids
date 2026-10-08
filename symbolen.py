@@ -82,6 +82,55 @@ def zonnecel(lengte, diepte, breedte=1.0, diameter=11.0, pijlkant=-1):
     return ring(0, 0, r, breedte, diepte).fuse(delen)
 
 
+def led(lengte, diepte, breedte=1.0, hoogte=9.0):
+    """LED: driehoek (anode links, stroom loopt naar +X) met een streep aan de punt,
+    draad links en rechts, en twee pijlen die schuin naar rechtsboven van de diode af wijzen."""
+    h = hoogte / 2
+    b = hoogte * 0.45                                # halve lengte van de driehoek
+    delen = [lijn((-b, h), (-b, -h), breedte, diepte),
+             lijn((-b, -h), (b, 0), breedte, diepte),
+             lijn((b, 0), (-b, h), breedte, diepte),
+             lijn((b + breedte / 2, -h), (b + breedte / 2, h), breedte, diepte),   # kathodestreep
+             lijn((b + breedte / 2, 0), (lengte / 2, 0), breedte, diepte, False)]
+    s = math.sqrt(0.5)
+    for x, y in ((-b + 2.2, h + 1.2), (-b + 5.8, h - 0.2)):   # staarten, net boven de schuine zijde
+        delen.append(pijl((x, y), (x + 5.5 * s, y + 5.5 * s), breedte, diepte))
+    return lijn((-lengte / 2, 0), (-b, 0), breedte, diepte, False).fuse(delen)
+
+
+def weerstand(lengte, diepte, breedte=1.0, lang=10.0, hoog=3.6):
+    """Weerstand (Europees symbool): rechthoekje, draad links en rechts."""
+    l, h = lang / 2, hoog / 2
+    delen = [lijn((-l, h), (l, h), breedte, diepte),
+             lijn((l, h), (l, -h), breedte, diepte),
+             lijn((l, -h), (-l, -h), breedte, diepte),
+             lijn((-l, -h), (-l, h), breedte, diepte),
+             lijn((l, 0), (lengte / 2, 0), breedte, diepte, False)]
+    return lijn((-lengte / 2, 0), (-l, 0), breedte, diepte, False).fuse(delen)
+
+
+LETTERTYPE = ("/System/Library/Fonts/Supplemental/", "Arial Bold.ttf")
+
+
+def tekst(inhoud, hoogte, diepte, lettertype=LETTERTYPE):
+    """Tekst als plaatje, gecentreerd rond de oorsprong; hoogte = hoogte van de hoofdletters."""
+    vlakken = []
+    for teken in Part.makeWireString(inhoud, lettertype[0], lettertype[1], 10.0, 0):
+        delen = sorted((Part.Face(w) for w in teken), key=lambda f: -f.Area)
+        if not delen:
+            continue
+        letter = delen[0]
+        for deel in delen[1:]:
+            binnenin = letter.common(deel).Area > 1e-6
+            letter = letter.cut(deel) if binnenin else letter.fuse(deel)
+        vlakken.append(letter)
+    vorm = vlakken[0].fuse(vlakken[1:]) if len(vlakken) > 1 else vlakken[0]
+    box = vorm.BoundBox
+    vorm.translate(V(-(box.XMin + box.XMax) / 2, -(box.YMin + box.YMax) / 2, 0))
+    vorm.scale(hoogte / box.YLength)
+    return vorm.extrude(V(0, 0, diepte))
+
+
 def plaats(vorm, x, y, z, hoek=0.0):
     """Draai het symbool om de Z-as en zet het op zijn plek; z is de onderkant."""
     vorm = vorm.copy()
