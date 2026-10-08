@@ -13,9 +13,9 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Module | Files | Size (mm) | LEGO base | Status |
 |---|---|---|---|---|
 | E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
-| Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 175.8 × 79.8 × 35.2 | yes, 22 × 10 studs | drawn, not yet test-printed |
+| Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
-| Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 42 × 59 × 34 | not yet | drawn, not yet test-printed |
+| Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
 | Square coil, original small style | `Spoel_Electromagneet_Vierkant.FCStd`, `vierkante_spoel-Spoelkoker.step` | 35 × 40 × 10 | no | bobbin only, same size as the original part, no banana sockets |
 
 The file names are Dutch: *lamphouder* = lamp holder, *zonnepaneel* = solar panel, *spoel* = coil, *houder* = holder, *bovenaanzicht* / *onderaanzicht* / *onderkant* = top view / bottom view / underside.
@@ -34,14 +34,14 @@ A square block with an E10 bulb base screwed on top and a red and a black banana
 
 ### Solar panel holder
 
-A frame for a 110 × 60 × 2 mm panel, with the two sockets on ears at opposite corners.
+A long rectangle for a 110 × 60 × 3 mm panel with rounded corners, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
 
 | Top | Underside |
 |---|---|
-| ![Solar panel holder](Zonnepaneel_Houder_Lego.png) | ![Underside with stud channel](Zonnepaneel_Houder_Lego_onderkant.png) |
+| ![Solar panel holder](Zonnepaneel_Houder_Lego.png) | ![Bottom view](Zonnepaneel_Houder_Lego_onderaanzicht.png) |
 
-- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. Fix it with a few drops of glue.
-- Known limitation: the sockets sit in the ears, where the opening straight below is only 13 mm wide. You have to reach them sideways through the large opening under the panel.
+- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it snaps in: six small wedge-shaped catches on the long sides of the pocket let the panel click past and then sit under its back, so no glue is needed. The pocket and window have rounded corners to match the panel. The snap fit depends on the real panel size and has not been confirmed with a print; a drop of glue still works as a backup. The plain version has a square pocket and needs glue.
+- Both socket holes sit straight above the open underside, clear of the LEGO clamp rim, so the sockets and nuts can be fitted from below. An earlier version with the sockets on ears made that impossible.
 
 ### Square coil
 
@@ -49,10 +49,24 @@ A square bobbin lying flat, with a terminal box beside it for the two sockets.
 
 ![Square coil with banana sockets](Spoel_Electromagneet_Bananenbus.png)
 
-- Sockets are 19 mm apart, the standard spacing, so a dual banana plug fits.
+- Sockets are 30 mm apart, to leave room for the coil symbol between them. (An earlier version used the standard 19 mm spacing for dual banana plugs.)
 - Two 2 mm slots in the wall between bobbin and box lead the wire ends to the solder tags.
 - Drawn for 0.8 mm enamelled copper wire, 5 layers of 7 turns (about 35 turns, about 4 m of wire). That is only about 0.14 Ω, close to a short circuit: use a current-limited supply or a series resistor. At 2 A it gives roughly 2.5 mT in the centre.
 - For induction experiments (moving a magnet through the coil) thinner wire with more turns works much better, for example 0.3 mm with 100+ turns.
+
+## Circuit symbols
+
+Each box has the schematic symbol of its part between the two banana sockets, inlaid flush in the top surface for printing in white: a circle with a cross for the lamp, a circle with a cell and two light arrows for the solar panel, and a row of bumps for the coil.
+
+| Lamp | Solar panel | Coil |
+|---|---|---|
+| ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil symbol](Spoel_Electromagneet_Bananenbus_bovenaanzicht.png) |
+
+- The symbol is 0.4 mm deep, two layers at 0.2 mm layer height. Change `SYMBOOL_DIEPTE` in the script for another layer height, or set it to 0 for no symbol.
+- The `.step` file of each of these three modules contains two bodies: the holder and the symbol. In the slicer, load it as one object with two parts and give the symbol part the white filament. Printed in one colour the two simply merge into a flat top.
+- The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed. The coil prints upright, so its symbol is in the last two layers.
+- The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. This has not been test-printed.
+- The shapes come from `symbolen.py`, which the three scripts import; keep it in the same folder. The plain solar panel holder has no symbol.
 
 ## Parts to buy
 
@@ -74,11 +88,11 @@ A square bobbin lying flat, with a terminal box beside it for the two sockets.
 
 ### LEGO fit
 
-The underside has a channel that grips the outer row of studs between the outer wall and an inner rib. The channel is 5.0 mm wide for 4.8 mm studs, 0.1 mm clearance per side, because printed slots usually come out slightly tight.
+The underside has a channel that grips the outer row of studs between the outer wall and an inner rib. The channel leaves 0.05 mm clearance per side around a 4.8 mm stud, and small crush ribs on the inner wall each squeeze 0.2 mm into a stud.
 
-A first print of the lamp holder with that plain channel slid over the studs but did not hold. The lamp holder therefore now has a tighter channel (0.05 mm clearance per side) plus one small crush rib per stud on the inner wall, each squeezing 0.2 mm into the stud, so it should stay on a vertical LEGO wall. The solar panel holder still has the plain 5.0 mm channel.
+A first print of the lamp holder with a plain, slightly wider channel slid over the studs but did not hold, which is why the ribs were added. The lamp holder has a rib at every stud along its sides (24 ribs). The LEGO solar panel holder is much larger and has one at every second stud (26 ribs), so it does not become too hard to press on. This rib fit has not been confirmed with a print yet.
 
-The fit depends on your printer. For the lamp holder, print `Lamphouder_E10-Pastest.step` first: it is only the bottom 6 mm and prints in minutes. If it is too loose or too tight, change `KLEMRIB_OVERMAAT` at the top of `lamphouder_e10.py` (larger is tighter) and re-run it. For the solar panel holder the value is `KLEM` (smaller is tighter).
+The fit depends on your printer. Print the test slice first (`Lamphouder_E10-Pastest.step` or `Zonnepaneel_Houder_Lego-Pastest.step`): it is only the bottom 6 mm and prints quickly. If it is too loose or too tight, change `KLEMRIB_OVERMAAT` at the top of the script (larger is tighter) and re-run it. For the solar panel holder you can also change `KLEMRIB_OM_DE` (1 puts a rib at every stud).
 
 ## Measure before you print
 
@@ -89,7 +103,7 @@ Only some dimensions come from product listings; the rest are estimates from pho
 | Socket mounting hole | 12.2 mm | listing: 12 mm, panel up to 6 mm thick |
 | Socket depth below the top plate | 28 mm | estimated |
 | Socket collar and nut diameter | 16 mm and 17 mm | estimated |
-| Solar panel | 110 × 60 × 2 mm, 0.3 mm clearance all round | listing |
+| Solar panel | 110 × 60 mm (listing), 3 mm thick (measured), 0.25 mm clearance all round; corner radius 4 mm estimated | listing and measurement |
 | E10 bracket length | 41 mm | listing |
 | E10 bracket hole spacing | 32 mm centre to centre | estimated from the photo |
 

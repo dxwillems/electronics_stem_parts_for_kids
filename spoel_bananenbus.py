@@ -7,9 +7,17 @@ import os
 
 # Kleur van de geprinte delen in het model: Bambu PLA Basic Blue (#0A2989)
 
+import importlib
+import sys
+
 import FreeCAD as App
 import Part
 from FreeCAD import Vector as V
+
+MAP = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
+sys.path.insert(0, MAP)
+import symbolen
+importlib.reload(symbolen)
 
 # ---------------------------------------------------------------- maten spoelkoker
 FLENS = 35.0            # vierkante flens
@@ -23,19 +31,24 @@ DRAAD = 0.8             # draaddiameter
 LAGEN = 5               # 5 lagen van 7 = ca. 35 windingen
 
 # ---------------------------------------------------------------- maten aansluitkastje
-KAST_B = 42.0           # breedte (X)
+KAST_B = 54.0           # breedte (X)
 KAST_D = 24.0           # diepte (Y)
 KAST_H = 34.0           # hoogte; ruimte voor de achterkant van de bussen
 KAST_RADIUS = 3.0
 WAND = 2.4
 PLAAT = 3.5             # bovenplaat (bus kan max 6 mm aan)
-BUS_AFSTAND = 19.0      # hart-op-hart, standaard voor dubbele banaanstekkers
+BUS_AFSTAND = 30.0      # hart-op-hart; ruimte voor het symbool tussen de bussen
 BUS_GAT_D = 12.2        # montagegat (opgave: 12 mm)
 BUS_KRAAG_D = 16.0      # geschat
 BUS_KRAAG_H = 5.5       # geschat
 BUS_MOER_D = 17.0       # geschat
 BUS_ACHTER = 28.0       # geschat: lengte onder de plaat incl. soldeerlip
 DRAADSLEUF = 2.0        # doorvoer voor de draadeinden naar het kastje
+
+# ---------------------------------------------------------------- symbool
+# Schakelsymbool in het bovenvlak, in een tweede kleur te printen (wit).
+SYMBOOL_DIEPTE = 0.4    # 2 lagen van 0,2 mm; 0 = geen symbool
+SYMBOOL_LIJN = 1.0
 
 # ---------------------------------------------------------------- afgeleid
 KERN = GAT + 2 * KERN_WAND
@@ -90,6 +103,13 @@ def maak_spoelkoker():
     return koker.fuse(kast).removeSplitter()
 
 
+def maak_symbool():
+    """Spoelsymbool tussen de twee bussen, verzonken in het dak van het kastje."""
+    ruimte = BUS_AFSTAND - BUS_KRAAG_D
+    vorm = symbolen.spoel(ruimte + 1.0, SYMBOOL_DIEPTE, SYMBOOL_LIJN, 3, (ruimte - 2.0) / 6)
+    return symbolen.plaats(vorm, 0, BUS_Y, KAST_H - SYMBOOL_DIEPTE)
+
+
 def maak_wikkeling():
     blok = vierkant(WIKKEL, WIKKEL_RADIUS, Z_KERN, Z_BOVEN)
     blok = blok.cut(vierkant(KERN, KERN_RADIUS, Z_KERN - 1, Z_BOVEN + 1))
@@ -123,8 +143,12 @@ def maak_moer(x):
 
 
 doc = App.newDocument("SpoelBananenbus")
-onderdelen = [("Spoelkoker", maak_spoelkoker(), (0.04, 0.16, 0.54)),
+koker = maak_spoelkoker()
+symbool = maak_symbool() if SYMBOOL_DIEPTE > 0 else None
+onderdelen = [("Spoelkoker", koker.cut(symbool) if symbool else koker, (0.04, 0.16, 0.54)),
               ("Koperwikkeling", maak_wikkeling(), (0.80, 0.50, 0.25))]
+if symbool:
+    onderdelen.insert(1, ("Symbool", symbool, (0.96, 0.96, 0.96)))
 for naam, x, kleur in BUSSEN:
     onderdelen.append(("Bus_" + naam, maak_bus(x), kleur))
     onderdelen.append(("Moer_" + naam, maak_moer(x), (0.6, 0.6, 0.6)))
@@ -141,7 +165,9 @@ print("Wikkeling tot %.1f mm, flens %.1f mm" % (WIKKEL, FLENS))
 
 map_ = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
 doc.saveAs(os.path.join(map_, "Spoel_Electromagneet_Bananenbus.FCStd"))
-Part.export([doc.Spoelkoker], os.path.join(map_, "Spoel_Electromagneet_Bananenbus-Spoelkoker.step"))
+# een bestand met twee delen: in de slicer het symbool een andere kleur geven
+Part.export([doc.Spoelkoker] + ([doc.Symbool] if symbool else []),
+            os.path.join(map_, "Spoel_Electromagneet_Bananenbus-Spoelkoker.step"))
 
 if App.GuiUp:
     import FreeCADGui as Gui
@@ -151,4 +177,10 @@ if App.GuiUp:
     view.fitAll()
     Gui.updateGui()
     view.saveImage(os.path.join(map_, "Spoel_Electromagneet_Bananenbus.png"), 1400, 1000, "White")
+    view.viewTop()
+    view.fitAll()
+    Gui.updateGui()
+    view.saveImage(os.path.join(map_, "Spoel_Electromagneet_Bananenbus_bovenaanzicht.png"), 1000, 1000, "White")
+    view.viewIsometric()
+    view.fitAll()
     doc.save()

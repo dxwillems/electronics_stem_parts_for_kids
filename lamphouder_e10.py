@@ -10,9 +10,17 @@ import os
 
 # Kleur van de geprinte delen in het model: Bambu PLA Basic Blue (#0A2989)
 
+import importlib
+import sys
+
 import FreeCAD as App
 import Part
 from FreeCAD import Vector as V
+
+MAP = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
+sys.path.insert(0, MAP)
+import symbolen
+importlib.reload(symbolen)
 
 # ---------------------------------------------------------------- LEGO
 LEGO = True             # False = gewone open onderkant met rechte wand
@@ -47,13 +55,18 @@ FITTING_D = 10.0        # productfoto
 FITTING_H = 18.0        # productfoto
 FITTING_Y = 12.0        # fitting achteraan, bussen vooraan
 
-BUS_AFSTAND = 24.0      # hart-op-hart van de twee bussen
+BUS_AFSTAND = 26.0      # hart-op-hart van de twee bussen
 BUS_Y = -13.0
 BUS_GAT_D = 12.2        # montagegat (opgave: 12 mm)
 BUS_KRAAG_D = 16.0      # geschat
 BUS_KRAAG_H = 5.5       # geschat
 BUS_MOER_D = 17.0       # geschat
 BUS_ACHTER = 28.0       # geschat: lengte onder de plaat incl. soldeerlip
+
+# ---------------------------------------------------------------- symbool
+# Schakelsymbool in het bovenvlak, in een tweede kleur te printen (wit).
+SYMBOOL_DIEPTE = 0.4    # 2 lagen van 0,2 mm; 0 = geen symbool
+SYMBOOL_LIJN = 1.2
 
 # ---------------------------------------------------------------- afgeleid
 HL = NOPPEN_L * NOP_STEEK / 2
@@ -145,6 +158,13 @@ def maak_houder():
     return houder.removeSplitter()
 
 
+def maak_symbool():
+    """Lampsymbool tussen de twee bussen, verzonken in het bovenvlak."""
+    ruimte = BUS_AFSTAND - BUS_KRAAG_D
+    vorm = symbolen.lamp(ruimte + 1.0, SYMBOOL_DIEPTE, SYMBOOL_LIJN, ruimte - 2.0)
+    return symbolen.plaats(vorm, 0, BUS_Y, HOOGTE - SYMBOOL_DIEPTE)
+
+
 def maak_fitting():
     """Vereenvoudigde E10-fitting met beugel, alleen ter controle van de passing."""
     dikte, brug = 0.6, 4.0
@@ -194,9 +214,13 @@ def maak_moer(x):
 
 
 doc = App.newDocument("LamphouderE10")
-onderdelen = [("Houder", maak_houder(), (0.04, 0.16, 0.54)),
+houder = maak_houder()
+symbool = maak_symbool() if SYMBOOL_DIEPTE > 0 else None
+onderdelen = [("Houder", houder.cut(symbool) if symbool else houder, (0.04, 0.16, 0.54)),
               ("Fitting_E10", maak_fitting(), (0.78, 0.78, 0.80)),
               ("Bouwplaat_controle", maak_bouwplaat(), (0.75, 0.75, 0.75))]
+if symbool:
+    onderdelen.insert(1, ("Symbool", symbool, (0.96, 0.96, 0.96)))
 for naam, x, kleur in BUSSEN:
     onderdelen.append(("Bus_" + naam, maak_bus(x), kleur))
     onderdelen.append(("Moer_" + naam, maak_moer(x), (0.6, 0.6, 0.6)))
@@ -222,7 +246,9 @@ print("Afstand bus-moer tot schroefnok: %.1f mm" % doc.Moer_rood.Shape.distToSha
 
 map_ = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
 doc.saveAs(os.path.join(map_, "Lamphouder_E10.FCStd"))
-Part.export([doc.Houder], os.path.join(map_, "Lamphouder_E10-Houder.step"))
+# een bestand met twee delen: in de slicer het symbool een andere kleur geven
+Part.export([doc.Houder] + ([doc.Symbool] if symbool else []),
+            os.path.join(map_, "Lamphouder_E10-Houder.step"))
 if LEGO:
     # alleen de onderste 6 mm: snelle proefprint om de klemming op een bouwplaat te testen
     proef = doc.Houder.Shape.common(doos(-HL, -HB, HL, HB, 0, 6.0))
@@ -239,7 +265,7 @@ if App.GuiUp:
     Gui.updateGui()
     view.saveImage(os.path.join(map_, "Lamphouder_E10.png"), 1400, 1000, "White")
     for obj in doc.Objects:
-        obj.ViewObject.Visibility = obj.Name == "Houder"
+        obj.ViewObject.Visibility = obj.Name in ("Houder", "Symbool")
     view.viewBottom()
     view.fitAll()
     Gui.updateGui()
