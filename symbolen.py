@@ -131,6 +131,20 @@ def tekst(inhoud, hoogte, diepte, lettertype=LETTERTYPE):
     return vorm.extrude(V(0, 0, diepte))
 
 
+def drukknop(lengte, diepte, breedte=1.0, opening=7.0):
+    """Drukknop (maakcontact): twee contactpunten met een brug erboven die je omlaag drukt,
+    draad links en rechts. De draden liggen op y = 0, de knop steekt naar +Y uit."""
+    o = opening / 2
+    brug = 2.6                                       # hoogte van de brug boven de contacten
+    delen = [Part.makeCylinder(breedte, diepte, V(-o, 0, 0)),          # contactpunten
+             Part.makeCylinder(breedte, diepte, V(o, 0, 0)),
+             lijn((-o - 1.2, brug), (o + 1.2, brug), breedte, diepte),  # brug
+             lijn((0, brug), (0, brug + 2.6), breedte, diepte),         # steel
+             lijn((-1.8, brug + 2.6), (1.8, brug + 2.6), breedte, diepte),   # knop
+             lijn((o, 0), (lengte / 2, 0), breedte, diepte, False)]
+    return lijn((-lengte / 2, 0), (-o, 0), breedte, diepte, False).fuse(delen)
+
+
 def plaats(vorm, x, y, z, hoek=0.0):
     """Draai het symbool om de Z-as en zet het op zijn plek; z is de onderkant."""
     vorm = vorm.copy()

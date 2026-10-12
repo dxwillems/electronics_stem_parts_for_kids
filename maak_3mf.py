@@ -19,6 +19,7 @@ FILAMENT_SYMBOOL = 2    # plek in de AMS: wit
 MODELLEN = [
     ("Lamphouder_E10", "Houder", True),
     ("Ledhouder_5mm", "Houder", True),
+    ("Drukknophouder", "Houder", True),
     ("Zonnepaneel_Houder_Lego", "Houder", True),
     ("Spoel_Electromagneet_Bananenbus", "Spoelkoker", False),
 ]

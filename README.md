@@ -14,6 +14,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 |---|---|---|---|---|
 | E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | drawn, not yet test-printed |
+| Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 | Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
@@ -47,15 +48,27 @@ A box for a standard 5 mm LED with its series resistor, made to connect straight
 - Wiring: red socket → resistor → long LED leg (anode); short LED leg (cathode) → black socket. The triangle in the symbol points the same way.
 - Both socket nuts sit straight above the open underside (77 × 29 mm).
 
+### Push button holder
+
+A box the same size as the lamp holder for a 12 mm momentary push button (PBS-33B, normally open), with the push-button symbol drawn between the two banana sockets and the button.
+
+| View | Top |
+|---|---|
+| ![Push button holder](Drukknophouder.png) | ![Top view with push-button symbol](Drukknophouder_bovenaanzicht.png) |
+
+- The button hole is 11.6 mm. The button only allows a 3 mm panel, so the top plate is thinned to 2.4 mm under the button (a 20 mm recess from below) and its nut still fits on the 6 mm thread.
+- The symbol shows two contacts with a bridge above them that the button pushes down; a line runs from each contact to a socket.
+- The button and both socket nuts sit straight above the 45 × 45 mm opening underneath.
+
 ### Solar panel holder
 
-A long rectangle for a 110 × 60 × 3 mm panel with rounded corners, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
+A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
 
 | Top | Underside |
 |---|---|
 | ![Solar panel holder](Zonnepaneel_Houder_Lego.png) | ![Bottom view](Zonnepaneel_Houder_Lego_onderaanzicht.png) |
 
-- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it snaps in: six small wedge-shaped catches on the long sides of the pocket let the panel click past and then sit under its back, so no glue is needed. The pocket and window have rounded corners to match the panel. The snap fit depends on the real panel size and has not been confirmed with a print; a drop of glue still works as a backup. The plain version has a square pocket and needs glue.
+- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel. This fit has not been confirmed with a print; a drop of glue still works as a backup. The plain version has a square pocket and needs glue.
 - Both socket holes sit straight above the open underside, clear of the LEGO clamp rim, so the sockets and nuts can be fitted from below. An earlier version with the sockets on ears made that impossible.
 
 ### Square coil
@@ -91,6 +104,7 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
 | Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
+| Red push button 12 mm, PBS-33B | push button holder | https://www.tinytronics.nl/nl/schakelaars/manuele-schakelaars/drukknoppen-en-schakelaars/rode-drukknop-12mm-reset-pbs-33b |
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
 | 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | – |
 | Screws 2.9 mm self-tapping or M3, 6–8 mm | lamp holder, two | – |
@@ -120,7 +134,7 @@ Only some dimensions come from product listings; the rest are estimates from pho
 | Socket mounting hole | 12.2 mm | listing: 12 mm, panel up to 6 mm thick |
 | Socket depth below the top plate | 28 mm | estimated |
 | Socket collar and nut diameter | 16 mm and 17 mm | estimated |
-| Solar panel | 110 × 60 mm (listing), 3 mm thick (measured), 0.25 mm clearance all round; corner radius 4 mm estimated | listing and measurement |
+| Solar panel | 110.0 × 60.1 × 3 mm, 0.35 mm clearance all round, square corners | measured |
 | E10 bracket length | 41 mm | listing |
 | E10 bracket hole spacing | 32 mm centre to centre | estimated from the photo |
 

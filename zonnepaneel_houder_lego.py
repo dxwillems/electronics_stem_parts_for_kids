@@ -1,4 +1,4 @@
-# Houder voor zonnepaneel 110 x 60 x 3 mm met twee 4 mm paneelbussen (12 mm montagegat),
+# Houder voor zonnepaneel 110 x 60,1 x 3 mm (haakse hoeken) met twee 4 mm paneelbussen (12 mm montagegat),
 # onderkant klemt met ribben op een LEGO-bouwplaat (19 x 9 noppen).
 # Langwerpige rechthoek: paneel links, de twee bussen rechts ernaast, zodat je er van
 # onderaf recht bij kunt zonder dat de LEGO-klemrand in de weg zit.
@@ -44,19 +44,27 @@ WAND = 2.4              # wanddikte boven de klemrand
 R_HOEK = 3.0            # afronding buitenhoeken (groter botst met de hoeknoppen)
 
 PANEEL_L = 110.0
-PANEEL_B = 60.0
+PANEEL_B = 60.1          # gemeten
 PANEEL_D = 3.0          # gemeten
-PANEEL_RADIUS = 4.0     # afgeronde hoeken van het paneel: geschat, meet na
-SPONNING_RADIUS = 2.0   # hoekronding van de uitsparing; moet kleiner blijven dan PANEEL_RADIUS
-VENSTER_RADIUS = 3.0    # hoekronding van het zichtvenster
-SPELING = 0.25          # rondom het paneel
+PANEEL_RADIUS = 0.0     # het paneel heeft vrijwel haakse hoeken
+SPONNING_RADIUS = 0.0   # uitsparing met scherpe hoeken, anders loopt de haakse paneelhoek vast
+VENSTER_RADIUS = 1.0    # hoekronding van het zichtvenster
+SPELING = 0.35          # rondom het paneel; geprinte uitsparingen vallen iets krapper uit
 RAND_LINKS = 8.0        # frame links van het paneel
 RAND_OVERLAP = 2.5      # zoveel dekt de bovenrand het paneel af
 RAND_DIKTE = 1.5        # dikte van die bovenrand
-KLIK = 0.7              # zoveel steken de kliknokjes onder het paneel uit; 0 = geen nokjes (lijmen)
+# Het paneel wordt vastgehouden door nokjes onder zijn achterkant:
+#  - achterste lange zijde (+Y): vaste haakjes; daar schuif je de rand schuin onder
+#  - voorste lange zijde (-Y): nokjes op verende tongen; die klikken opzij als je het paneel aandrukt
+KLIK = 0.9              # zoveel steken de nokjes onder het paneel uit; 0 = geen nokjes (lijmen)
 KLIK_ZONE = 1.0         # hoogte van de schuine aanloop van de nokjes, onder het paneel
-KLIK_B = 6.0            # breedte van een nokje
-KLIK_X = (-36.0, 0.0, 36.0)   # plekken langs beide lange zijden, vanaf het midden van het paneel
+KLIK_B = 5.0            # breedte van een nokje
+KLIK_X = (-36.0, 0.0, 36.0)   # vaste haakjes, vanaf het midden van het paneel
+TONG_X = (-30.0, 30.0)  # verende nokjes, vanaf het midden van het paneel
+TONG_L = 12.0           # lengte van een tong
+TONG_D = 1.2            # dikte van een tong
+TONG_SLEUF = 1.4        # sleuf achter de tong: zoveel kan hij wijken
+TONG_EIND = 1.0         # sleuf aan het vrije uiteinde
 
 BUS_AFSTAND = 34.0      # hart-op-hart van de twee bussen (dwars op de lengte)
 BUS_GAT_D = 12.2        # montagegat (opgave: 12 mm, plaatdikte max 6 mm)
@@ -98,6 +106,8 @@ def doos(x0, y0, x1, y1, z0, z1):
 def ronde_doos(hl, hb, radius, z0, z1):
     """Doos van 2*hl x 2*hb rond het midden van het paneel, verticale ribben afgerond."""
     vorm = doos(PANEEL_X - hl, -hb, PANEEL_X + hl, hb, z0, z1)
+    if radius <= 0:
+        return vorm
     ribben = [e for e in vorm.Edges
               if abs(e.Vertexes[0].Point.z - e.Vertexes[-1].Point.z) > 1e-6]
     return vorm.makeFillet(radius, ribben)
@@ -132,20 +142,37 @@ def maak_klemribben():
 
 
 def maak_kliknokjes():
-    """Wigjes op de lange wanden van de sponning: het paneel klikt er van onderaf langs
-    en rust er daarna op. Schuin aan de inschuifkant, vlak aan de paneelkant."""
-    z_paneel = HOOGTE - RAND_DIKTE - PANEEL_D - 0.1
+    """Wigjes onder de achterkant van het paneel: schuin aan de inschuifkant, vlak aan de
+    paneelkant. Vaste haakjes aan +Y, nokjes op de tongen aan -Y."""
+    z_paneel = HOOGTE - RAND_DIKTE - PANEEL_D - 0.15
     z_onder = HOOGTE - PLAAT
     nokjes = []
-    for sy in (-1, 1):
+    for sy, plekken in ((1, KLIK_X), (-1, TONG_X)):
         y = sy * SB
         driehoek = Part.Face(Part.makePolygon([
             V(0, y, z_paneel), V(0, y - sy * KLIK, z_paneel), V(0, y, z_onder), V(0, y, z_paneel)]))
-        for x in KLIK_X:
+        for x in plekken:
             nok = driehoek.extrude(V(KLIK_B, 0, 0))
             nok.translate(V(PANEEL_X + x - KLIK_B / 2, 0, 0))
             nokjes.append(nok)
     return nokjes
+
+
+def maak_tongsleuven():
+    """L-vormige sleuven door de bovenplaat die bij elk nokje aan -Y een verende tong vrijmaken:
+    een sleuf achter de tong en een aan het vrije uiteinde, dat van het midden af wijst."""
+    z0, z1 = HOOGTE - PLAAT - 1, HOOGTE + 1
+    y_wand = -SB
+    y_achter = y_wand - TONG_D - TONG_SLEUF
+    sleuven = []
+    for x in TONG_X:
+        kant = 1 if x >= 0 else -1
+        vrij = PANEEL_X + x + kant * KLIK_B / 2             # vrije uiteinde, net voorbij het nokje
+        vast = vrij - kant * TONG_L
+        buiten = vrij + kant * TONG_EIND
+        sleuven.append(doos(min(vast, buiten), y_achter, max(vast, buiten), y_wand - TONG_D, z0, z1))
+        sleuven.append(doos(min(vrij, buiten), y_achter, max(vrij, buiten), y_wand + 4.0, z0, z1))
+    return sleuven
 
 
 def maak_houder():
@@ -173,6 +200,7 @@ def maak_houder():
     houder = houder.cut(ronde_doos(SL, SB, SPONNING_RADIUS, HOOGTE - PLAAT - 1, HOOGTE - RAND_DIKTE))
     if KLIK > 0:
         houder = houder.fuse(maak_kliknokjes())
+        houder = houder.cut(maak_tongsleuven()[0].fuse(maak_tongsleuven()[1:]))
     for _, y, _ in BUSSEN:
         houder = houder.cut(Part.makeCylinder(BUS_GAT_D / 2, PLAAT + 2,
                                               V(BUS_X, y, HOOGTE - PLAAT - 1)))
@@ -245,6 +273,9 @@ print("Vrije opening onderkant: x %.1f tot %.1f, y +/- %.1f" % (-HL + RIB_BINNEN
 print("Moeren: x %.1f tot %.1f, y +/- %.1f  (bus op x = %.1f, toegestaan %.1f tot %.1f)"
       % (BUS_X - BUS_MOER_D / 2, BUS_X + BUS_MOER_D / 2, BUS_AFSTAND / 2 + BUS_MOER_D / 2,
          BUS_X, BUS_X_MIN, BUS_X_MAX))
+print("Sponning %.2f x %.2f voor paneel %.2f x %.2f; tussen haakjes en tongnokjes %.2f; vaste rand tot sleuf %.2f"
+      % (2 * SL, 2 * SB, PANEEL_L, PANEEL_B, 2 * SB - 2 * KLIK,
+         HB - BUITEN_SPELING - (SB + TONG_D + TONG_SLEUF)))
 print("Bovenplaat %.1f mm (bus max 6), ruimte eronder %.1f mm (bus %.1f)" % (PLAAT, HOOGTE - PLAAT, BUS_ACHTER))
 
 map_ = os.path.dirname(os.path.abspath(__file__)) if "__file__" in dir() else os.getcwd()
