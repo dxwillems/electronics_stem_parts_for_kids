@@ -20,6 +20,7 @@ MODELLEN = [
     ("Lamphouder_E10", "Houder", True),
     ("Ledhouder_5mm", "Houder", True),
     ("Drukknophouder", "Houder", True),
+    ("Handgenerator", "Houder", True),
     ("Zonnepaneel_Houder_Lego", "Houder", True),
     ("Spoel_Electromagneet_Bananenbus", "Spoelkoker", False),
 ]

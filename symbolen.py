@@ -145,6 +145,12 @@ def drukknop(lengte, diepte, breedte=1.0, opening=7.0):
     return lijn((-lengte / 2, 0), (-o, 0), breedte, diepte, False).fuse(delen)
 
 
+def generator(diepte, breedte=1.0, diameter=14.0, letter="G"):
+    """Generator: cirkel met de letter G erin. Zonder draden; die tekent het model zelf."""
+    r = diameter / 2
+    return ring(0, 0, r, breedte, diepte).fuse(tekst(letter, r * 0.95, diepte))
+
+
 def plaats(vorm, x, y, z, hoek=0.0):
     """Draai het symbool om de Z-as en zet het op zijn plek; z is de onderkant."""
     vorm = vorm.copy()

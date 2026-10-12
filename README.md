@@ -15,6 +15,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | drawn, not yet test-printed |
 | Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
+| Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 | Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
@@ -60,6 +61,21 @@ A box the same size as the lamp holder for a 12 mm momentary push button (PBS-33
 - The symbol shows two contacts with a bridge above them that the button pushes down; a line runs from each contact to a socket.
 - The button and both socket nuts sit straight above the 45 × 45 mm opening underneath.
 
+### Hand crank generator
+
+A box for a small hand crank generator (blue gearbox with a motor). The gearbox stands in a well in the top with the motor pointing down into the box and the crank turning on top; the generator symbol (a circle with a G) sits next to the two banana sockets.
+
+| View | Top |
+|---|---|
+| ![Hand crank generator](Handgenerator.png) | ![Top view with generator symbol](Handgenerator_bovenaanzicht.png) |
+
+- The gearbox block (50 × 25.5 × 17.8 mm) sits 8 mm deep in a well with 0.4 mm clearance per side, so it stays upright and cannot twist when you crank.
+- The floor of the well is shaped to the underside of the gearbox: a round opening for the blue collar around the motor, a slot for the 2.2 mm rib that runs along the motor side, and below that a slitted collar around the 24.35 mm motor. A cable tie around that collar clamps the motor. The motor hangs about 3.5 mm past the end of the gearbox, so the well is open at that end.
+- The box is wide (16 × 10 studs) so there is room for your fingers: 33 mm between the motor cup and the socket nuts, and both nuts sit well inside the opening underneath.
+- The crank arm is about 52 mm long; the sockets are placed beyond its reach so plugged-in leads do not get hit.
+- Measured on the real part: block size, collar height, motor diameter and length, how far the motor hangs past the end, rib thickness and crank axis position. Still estimated: the diameter of the blue collar (28 mm; the opening is 29 mm) and the height of the rib.
+- Fast cranking can give well over 6 V, which is too much for the LED module with its 220 Ω resistor; crank gently or use the lamp.
+
 ### Solar panel holder
 
 A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
@@ -104,6 +120,7 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
 | Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
+| Hand crank generator kit, 3–6 V | hand crank generator | https://amzn.eu/d/02YDxxYm |
 | Red push button 12 mm, PBS-33B | push button holder | https://www.tinytronics.nl/nl/schakelaars/manuele-schakelaars/drukknoppen-en-schakelaars/rode-drukknop-12mm-reset-pbs-33b |
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
 | 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | – |
