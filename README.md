@@ -148,12 +148,11 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 
 ### Conrad order for the next modules
 
-Ordered from Conrad for the planned dimmer, buzzer and light sensor modules, and for the motor module. Prices are what Conrad charged at the time of ordering, including VAT.
+Ordered from Conrad for the planned dimmer, buzzer and light sensor modules, and for the motor module. The dimmer uses one wirewound potentiometer for both the E10 lamp and the LED module. Prices are what Conrad charged at the time of ordering, including VAT.
 
 | Qty | Part | Conrad nr. | For | Unit price | Link |
 |---|---|---|---|---|---|
 | 1 | KYOCERA/AVX 3104604002 wirewound potentiometer, 100 Ω, 4 W, linear, 6 mm shaft, M10 thread | 2827033 | dimmer: dims the E10 lamp and, a little, the LED module (max 0.2 A) | € 12.99 | https://www.conrad.nl/nl/p/kyocera-avx-3104604002-3104604002-draadpotmeter-mono-4-w-100-1-stuk-s-2827033.html |
-| 1 | Weltron WP20CS potentiometer, 1 kΩ, 0.4 W, linear, 60 mm shaft | 440864 | dimmer: dims the LED module (not for the lamp) | € 3.79 | https://www.conrad.nl/nl/p/weltron-002045038789-wp20cs-08-60f1-1k-20-lin-draaipotmeter-mono-0-4-w-1-k-1-stuk-s-440864.html |
 | 5 | TRU COMPONENTS TC-9202060 active buzzer, 5 V DC, continuous tone, 85 dB, Ø 12 × 9 mm | 2300515 | buzzer module | € 0.97 | https://www.conrad.nl/nl/p/tru-components-tc-9202060-miniatuurzoemer-geluidsontwikkeling-85-db-spanning-5-v-dc-continu-1-stuk-s-2300515.html |
 | 3 | LUNA Optoelectronics PDV-P8103 light dependent resistor (LDR), 16–33 kΩ at 10 lux | 1762910 | light sensor module | € 1.79 | https://www.conrad.nl/nl/p/luna-optoelectronics-pdv-p8103-fotoweerstand-ldr-tht-1-stuk-s-150-v-max-l-x-b-x-h-4-29-x-5-08-x-2-mm-1762910.html |
 | 4 | Sol Expert SOL300 solar motor, 0.18–6 V, starts at 8 mA, Ø 24.2 mm | 1371438 | motor with propeller | € 2.29 | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
