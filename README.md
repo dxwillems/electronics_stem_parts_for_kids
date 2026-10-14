@@ -16,6 +16,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | drawn, not yet test-printed |
 | Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | drawn, not yet test-printed |
+| Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 | Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
@@ -76,6 +77,21 @@ A box for a small hand crank generator (blue gearbox with a motor). The gearbox 
 - Measured on the real part: block size, collar height, motor diameter and length, how far the motor hangs past the end, rib thickness and crank axis position. Still estimated: the diameter of the blue collar (28 mm; the opening is 29 mm) and the height of the rib.
 - Fast cranking can give well over 6 V, which is too much for the LED module with its 220 Ω resistor; crank gently or use the lamp.
 
+### Motor with propeller
+
+A box with the motor symbol (a circle with an M) and the two banana sockets, plus an upright stand that holds a Sol Expert SOL300 solar motor with its shaft horizontal, so the propeller blows air sideways.
+
+| View | Top of the box |
+|---|---|
+| ![Motor with propeller](Motorhouder.png) | ![Top view with motor symbol](Motorhouder_bovenaanzicht.png) |
+
+- Three parts to print: the box (`Motorhouder-Print.3mf`, upside down with the white symbol), the stand (`Motorhouder_Standaard-Print.3mf`, lying flat on its side) and the propeller (`Propeller-Print.3mf`). None need support.
+- The stand is a 7 mm plate with a 24.5 mm hole; three small ribs in the hole squeeze the 24.2 mm motor. A 24 × 7 mm tab under the stand goes 11 mm deep into a slot in the box; fix it with a drop of glue. The motor wires go down behind the stand through a 6 mm hole.
+- The motor axis is 42 mm above the box, so a 70 mm propeller clears the top by 7 mm.
+- The propeller (`propeller.py`) has three blades at 28°, 70 mm across, and a 2 mm hole that presses onto the motor shaft. The blades stand on their lower edge on the bed, so it prints without support.
+- The SOL300 starts at 8 mA, so it runs from the solar panel, the hand crank generator, batteries or 5 V. Swapping the leads reverses the motor, and the propeller then blows the other way.
+- Not yet measured on the real motor: its length and the length of its shaft.
+
 ### Solar panel holder
 
 A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
@@ -100,7 +116,7 @@ A square bobbin lying flat, with a terminal box beside it for the two sockets.
 
 ## Circuit symbols
 
-Each box has the schematic symbol of its part between the two banana sockets, inlaid flush in the top surface for printing in white: a circle with a cross for the lamp, a resistor and a diode triangle with two arrows for the LED, a circle with a cell and two light arrows for the solar panel, and a row of bumps for the coil.
+Each box has the schematic symbol of its part between the two banana sockets, inlaid flush in the top surface for printing in white: a circle with a cross for the lamp, a resistor and a diode triangle with two arrows for the LED, a circle with an M for the motor, a circle with a cell and two light arrows for the solar panel, and a row of bumps for the coil.
 
 | Lamp | LED | Solar panel | Coil |
 |---|---|---|---|
@@ -115,17 +131,37 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 
 ## Parts to buy
 
+### Parts for the finished modules
+
 | Part | Used in | Link |
 |---|---|---|
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
 | Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
+| Sol Expert SOL300 solar motor (0.18–6 V, Ø 24.2 mm) | motor with propeller | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
 | Hand crank generator kit, 3–6 V | hand crank generator | https://amzn.eu/d/02YDxxYm |
 | Red push button 12 mm, PBS-33B | push button holder | https://www.tinytronics.nl/nl/schakelaars/manuele-schakelaars/drukknoppen-en-schakelaars/rode-drukknop-12mm-reset-pbs-33b |
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
 | 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | – |
 | Screws 2.9 mm self-tapping or M3, 6–8 mm | lamp holder, two | – |
 | Enamelled copper wire, 0.8 mm | coil | – |
+
+### Conrad order for the next modules
+
+Ordered from Conrad for the planned dimmer, buzzer and light sensor modules, and for the motor module. Prices are what Conrad charged at the time of ordering, including VAT.
+
+| Qty | Part | Conrad nr. | For | Unit price | Link |
+|---|---|---|---|---|---|
+| 1 | KYOCERA/AVX 3104604002 wirewound potentiometer, 100 Ω, 4 W, linear, 6 mm shaft, M10 thread | 2827033 | dimmer: dims the E10 lamp and, a little, the LED module (max 0.2 A) | € 12.99 | https://www.conrad.nl/nl/p/kyocera-avx-3104604002-3104604002-draadpotmeter-mono-4-w-100-1-stuk-s-2827033.html |
+| 1 | Weltron WP20CS potentiometer, 1 kΩ, 0.4 W, linear, 60 mm shaft | 440864 | dimmer: dims the LED module (not for the lamp) | € 3.79 | https://www.conrad.nl/nl/p/weltron-002045038789-wp20cs-08-60f1-1k-20-lin-draaipotmeter-mono-0-4-w-1-k-1-stuk-s-440864.html |
+| 5 | TRU COMPONENTS TC-9202060 active buzzer, 5 V DC, continuous tone, 85 dB, Ø 12 × 9 mm | 2300515 | buzzer module | € 0.97 | https://www.conrad.nl/nl/p/tru-components-tc-9202060-miniatuurzoemer-geluidsontwikkeling-85-db-spanning-5-v-dc-continu-1-stuk-s-2300515.html |
+| 3 | LUNA Optoelectronics PDV-P8103 light dependent resistor (LDR), 16–33 kΩ at 10 lux | 1762910 | light sensor module | € 1.79 | https://www.conrad.nl/nl/p/luna-optoelectronics-pdv-p8103-fotoweerstand-ldr-tht-1-stuk-s-150-v-max-l-x-b-x-h-4-29-x-5-08-x-2-mm-1762910.html |
+| 4 | Sol Expert SOL300 solar motor, 0.18–6 V, starts at 8 mA, Ø 24.2 mm | 1371438 | motor with propeller | € 2.29 | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
+
+Notes:
+- The 100 Ω wirewound potentiometer can carry about 0.2 A (√(4 W / 100 Ω)). Use E10 bulbs of 0.2 A or less with it; for 0.3 A bulbs the 50 Ω version (Conrad 444782) is the safe choice.
+- The buzzer is polarised: + to the red socket.
+- Put the LDR in series with something (for example the LED module), never straight across the supply.
 
 ## Printing
 

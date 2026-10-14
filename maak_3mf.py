@@ -15,14 +15,19 @@ NAUWKEURIGHEID = 0.02   # maximale afwijking van de driehoeken t.o.v. het model,
 FILAMENT_HOUDER = 4     # plek in de AMS: blauw
 FILAMENT_SYMBOOL = 2    # plek in de AMS: wit
 
-# (FreeCAD-bestand, naam van de houder daarin, ondersteboven printen?)
+# (FreeCAD-bestand, onderdeel daarin, printstand, naam van het 3MF-bestand)
+# printstand: "ondersteboven" (bovenvlak op het bed), "rechtop" (zoals getekend) of
+# "plat" (een staande plaat met zijn dikte langs X op zijn zijkant gelegd)
 MODELLEN = [
-    ("Lamphouder_E10", "Houder", True),
-    ("Ledhouder_5mm", "Houder", True),
-    ("Drukknophouder", "Houder", True),
-    ("Handgenerator", "Houder", True),
-    ("Zonnepaneel_Houder_Lego", "Houder", True),
-    ("Spoel_Electromagneet_Bananenbus", "Spoelkoker", False),
+    ("Lamphouder_E10", "Houder", "ondersteboven", "Lamphouder_E10"),
+    ("Ledhouder_5mm", "Houder", "ondersteboven", "Ledhouder_5mm"),
+    ("Drukknophouder", "Houder", "ondersteboven", "Drukknophouder"),
+    ("Handgenerator", "Houder", "ondersteboven", "Handgenerator"),
+    ("Motorhouder", "Houder", "ondersteboven", "Motorhouder"),
+    ("Motorhouder", "Standaard", "plat", "Motorhouder_Standaard"),
+    ("Propeller", "Propeller", "rechtop", "Propeller"),
+    ("Zonnepaneel_Houder_Lego", "Houder", "ondersteboven", "Zonnepaneel_Houder_Lego"),
+    ("Spoel_Electromagneet_Bananenbus", "Spoelkoker", "rechtop", "Spoel_Electromagneet_Bananenbus"),
 ]
 
 CONTENT_TYPES = """<?xml version="1.0" encoding="UTF-8"?>
@@ -89,21 +94,23 @@ def schrijf_3mf(pad, naam, delen):
         z.writestr("Metadata/model_settings.config", config)
 
 
-for naam, houdernaam, ondersteboven in MODELLEN:
+for naam, deelnaam, stand, uitvoer in MODELLEN:
     doc = App.openDocument(os.path.join(MAP, naam + ".FCStd"))
-    delen = [(houdernaam, doc.getObject(houdernaam).Shape.copy(), FILAMENT_HOUDER)]
-    if doc.getObject("Symbool"):
+    delen = [(deelnaam, doc.getObject(deelnaam).Shape.copy(), FILAMENT_HOUDER)]
+    if doc.getObject("Symbool") and deelnaam in ("Houder", "Spoelkoker"):
         delen.append(("Symbool", doc.Symbool.Shape.copy(), FILAMENT_SYMBOOL))
     box = delen[0][1].BoundBox
-    midden = V((box.XMin + box.XMax) / 2, (box.YMin + box.YMax) / 2, 0)
+    midden = V((box.XMin + box.XMax) / 2, (box.YMin + box.YMax) / 2, (box.ZMin + box.ZMax) / 2)
     for _, vorm, _ in delen:
         vorm.translate(midden * -1)
-        if ondersteboven:
+        if stand == "ondersteboven":
             vorm.rotate(V(0, 0, 0), V(1, 0, 0), 180)
-            vorm.translate(V(0, 0, box.ZMax))
-        else:
-            vorm.translate(V(0, 0, -box.ZMin))
-    schrijf_3mf(os.path.join(MAP, naam + "-Print.3mf"), naam, delen)
-    print(naam, "->", naam + "-Print.3mf", [(d[0], "filament %d" % d[2]) for d in delen],
+        elif stand == "plat":
+            vorm.rotate(V(0, 0, 0), V(0, 1, 0), 90)
+    zmin = min(d[1].BoundBox.ZMin for d in delen[:1])
+    for _, vorm, _ in delen:
+        vorm.translate(V(0, 0, -zmin))
+    schrijf_3mf(os.path.join(MAP, uitvoer + "-Print.3mf"), uitvoer, delen)
+    print(uitvoer, "->", uitvoer + "-Print.3mf", [(d[0], "filament %d" % d[2]) for d in delen],
           "z %.2f tot %.2f" % (delen[0][1].BoundBox.ZMin, delen[0][1].BoundBox.ZMax))
     App.closeDocument(doc.Name)
