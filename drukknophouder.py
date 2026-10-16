@@ -189,6 +189,10 @@ def maak_moer(x):
 
 doc = App.newDocument("Drukknophouder")
 houder = maak_houder()
+houder, plek = symbolen.handtekening(houder, HOOGTE - PLAAT, [
+    (0, HB - WAND - 6, 0), (0, -(HB - WAND - 6), 0), (0, 0, 0),
+    (-(HL - WAND - 6), 0, 90), (HL - WAND - 6, 0, 90)])
+print("Handtekening op", plek)
 symbool = maak_symbool() if SYMBOOL_DIEPTE > 0 else None
 onderdelen = [("Houder", houder.cut(symbool) if symbool else houder, (0.04, 0.16, 0.54)),
               ("Drukknop", maak_knop(), (0.85, 0.10, 0.10)),

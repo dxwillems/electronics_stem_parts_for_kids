@@ -245,6 +245,9 @@ def maak_moer(y):
 
 doc = App.newDocument("ZonnepaneelHouderLego")
 houder = maak_houder()
+houder, plek = symbolen.handtekening(houder, HOOGTE - PLAAT, [
+    (-(HL - WAND - 3.4), 0, 90), (HL - WAND - 4.5, 0, 90), (0, HB - WAND - 1.6, 0)], hoogte=3.5)
+print("Handtekening op", plek)
 symbool = maak_symbool() if SYMBOOL_DIEPTE > 0 else None
 onderdelen = [("Houder", houder.cut(symbool) if symbool else houder, (0.04, 0.16, 0.54)),
               ("Zonnepaneel", maak_paneel(), (0.02, 0.02, 0.05)),

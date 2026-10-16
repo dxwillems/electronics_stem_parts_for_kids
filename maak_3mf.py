@@ -26,6 +26,9 @@ MODELLEN = [
     ("Motorhouder", "Houder", "ondersteboven", "Motorhouder"),
     ("Motorhouder", "Standaard", "plat", "Motorhouder_Standaard"),
     ("Propeller", "Propeller", "rechtop", "Propeller"),
+    ("Spoelhouder_Rond", "Houder", "ondersteboven", "Spoelhouder_Rond"),
+    ("Spoelhouder_Rond", "Wieg", "rechtop", "Spoelhouder_Rond_Wieg"),
+    ("Spoelhouder_Rond", "Koker", "rechtop", "Spoelhouder_Rond_Koker"),   # op zijn kant, support onder de buis
     ("IJzerpoeder_Doos", "Frame", "rechtop", "IJzerpoeder_Doos_Frame"),
     ("IJzerpoeder_Doos", "Eindkap", "plat", "IJzerpoeder_Doos_Eindkap"),
     ("Zonnepaneel_Houder_Lego", "Houder", "ondersteboven", "Zonnepaneel_Houder_Lego"),

@@ -151,6 +151,28 @@ def generator(diepte, breedte=1.0, diameter=14.0, letter="G"):
     return ring(0, 0, r, breedte, diepte).fuse(tekst(letter, r * 0.95, diepte))
 
 
+HANDTEKENING = "designed by d-x.nl"
+
+
+def handtekening(houder, z_onder, kandidaten, hoogte=4.0, diepte=0.4, inhoud=HANDTEKENING):
+    """Graveer de tekst in de onderkant van de bovenplaat (z_onder), gespiegeld zodat hij van
+    onderaf goed leesbaar is. Neemt de eerste plek uit kandidaten [(x, y, hoek), ...] waar de
+    tekst helemaal in massief materiaal valt (dus niet over een gat, moer of nok heen)."""
+    basis = tekst(inhoud, hoogte, diepte + 0.01)
+    basis.rotate(V(0, 0, 0), V(0, 1, 0), 180)       # gespiegeld: leesbaar van onderaf
+    basis.translate(V(0, 0, z_onder + diepte))
+    for x, y, hoek in kandidaten:
+        t = basis.copy()
+        t.rotate(V(0, 0, 0), V(0, 0, 1), hoek)
+        t.translate(V(x, y, 0))
+        proef = t.copy()
+        proef.translate(V(0, 0, 0.02))               # helemaal binnen de plaat voor de controle
+        if abs(houder.common(proef).Volume - proef.Volume) < 1e-3 * proef.Volume:
+            return houder.cut(t), (x, y, hoek)
+    print("LET OP: geen vrije plek gevonden voor de handtekening")
+    return houder, None
+
+
 def plaats(vorm, x, y, z, hoek=0.0):
     """Draai het symbool om de Z-as en zet het op zijn plek; z is de onderkant."""
     vorm = vorm.copy()

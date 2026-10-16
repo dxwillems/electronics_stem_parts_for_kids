@@ -257,6 +257,10 @@ def maak_moer(y):
 
 doc = App.newDocument("Handgenerator")
 houder = maak_houder()
+houder, plek = symbolen.handtekening(houder, HOOGTE - PLAAT, [
+    (0, HB - WAND - 6, 0), (0, -(HB - WAND - 6), 0), (0, 0, 0),
+    (-(HL - WAND - 6), 0, 90), (HL - WAND - 6, 0, 90)])
+print("Handtekening op", plek)
 symbool = maak_symbool() if SYMBOOL_DIEPTE > 0 else None
 onderdelen = [("Houder", houder.cut(symbool) if symbool else houder, (0.04, 0.16, 0.54)),
               ("Generator", maak_generator(), (0.45, 0.65, 0.95)),

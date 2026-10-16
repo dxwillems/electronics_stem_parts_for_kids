@@ -17,6 +17,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | drawn, not yet test-printed |
 | Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | drawn, not yet test-printed |
+| Round coil | `Spoelhouder_Rond.*` | 79.8 × 79.8 × 35.2 box, coil on top | yes, 10 × 10 studs | drawn, not yet test-printed |
 | Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
@@ -93,6 +94,18 @@ A box with the motor symbol (a circle with an M) and the two banana sockets, plu
 - The SOL300 starts at 8 mA, so it runs from the solar panel, the hand crank generator, batteries or 5 V. Swapping the leads reverses the motor, and the propeller then blows the other way.
 - Not yet measured on the real motor: its length and the length of its shaft.
 
+### Round coil
+
+A round coil for 100 m of 0.3 mm enamelled copper wire on a tube with a 20.4 mm hole, so a bar magnet or an iron rod fits through. The coil clicks into a cradle on a LEGO box with two banana sockets and the coil symbol.
+
+![Round coil](Spoelhouder_Rond.png)
+
+- Three parts: the box (`Spoelhouder_Rond-Print.3mf`, upside down), the cradle (`Spoelhouder_Rond_Wieg-Print.3mf`) and the coil tube with its two square 40 × 40 mm flanges in one piece (`Spoelhouder_Rond_Koker-Print.3mf`). Print the tube on its side with support only under the tube between the flanges. PETG is the better material for the tube and cradle, since it softens at a higher temperature than PLA.
+- The whole 100 m roll gives about 9 layers, 1200 turns and 25 Ω, so it draws about 0.2 A at 5 V. It is safe on the hand crank generator; on a 12 V supply it gets warm within minutes.
+- Each flange has a hole near the core for the start of the winding, a hole just outside the winding for the end, and two holes in a corner to tie down a flexible lead.
+- The coil clicks out of the cradle. Its square flanges let it lie flat, so you can put the iron powder viewer on top of it, or hold it against the viewer, to see the field of a coil. Use flexible leads of about 25 cm to the sockets.
+- The cradle is fixed with four M3 × 8 mm screws (or 2.9 × 9.5 mm self-tapping screws), screwed up from inside the box through the top plate.
+
 ### Iron powder viewer
 
 A sealed box for iron powder to show magnetic field lines: two clear 2 mm sheets with a 4 mm chamber between them, held in a blue frame. Lay a magnet under or on top of it and tap gently.
@@ -151,6 +164,8 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
 | Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
+| Enamelled copper wire 0.3 mm, 100 m | round coil | https://amzn.eu/d/0dwjVQfA |
+| Screws M3 × 8 mm (or 2.9 × 9.5 mm self-tapping), 4 | round coil cradle | – |
 | Iron powder, 200 g | iron powder viewer | https://amzn.eu/d/0hN4Aijz |
 | OFFCUP clear sheets, 2 mm, 10.2 × 15.2 cm (pack of 11) | iron powder viewer, two per box | https://amzn.eu/d/03hC4ULd |
 | Sol Expert SOL300 solar motor (0.18–6 V, Ø 24.2 mm) | motor with propeller | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
@@ -178,6 +193,8 @@ Notes:
 - Put the LDR in series with something (for example the LED module), never straight across the supply.
 
 ## Printing
+
+- The underside of every box carries the engraved text "designed by d-x.nl" on the inside of the top plate, mirrored so it reads correctly from below.
 
 - Each module has a `.step` file of just the printable holder. The lamp holder also has `Lamphouder_E10-Pastest.step`, a 6 mm test slice for checking the LEGO fit. The `.FCStd` files also contain dummy sockets, nuts, the panel or bulb base, and a piece of baseplate for checking the fit; do not print those.
 - Lamp holder and both solar panel holders: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
