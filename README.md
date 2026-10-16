@@ -17,6 +17,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | drawn, not yet test-printed |
 | Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | drawn, not yet test-printed |
+| Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 | Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
@@ -92,6 +93,18 @@ A box with the motor symbol (a circle with an M) and the two banana sockets, plu
 - The SOL300 starts at 8 mA, so it runs from the solar panel, the hand crank generator, batteries or 5 V. Swapping the leads reverses the motor, and the propeller then blows the other way.
 - Not yet measured on the real motor: its length and the length of its shaft.
 
+### Iron powder viewer
+
+A sealed box for iron powder to show magnetic field lines: two clear 2 mm sheets with a 4 mm chamber between them, held in a blue frame. Lay a magnet under or on top of it and tap gently.
+
+![Iron powder viewer](IJzerpoeder_Doos.png)
+
+- Both sheets slide into grooves from the open short side; an end cap closes that side. The end cap is 7 mm wide, the same as the frame border on the other sides.
+- To fill: slide both sheets in, stand the box on its closed end and pour 5–10 g of iron powder through the open side with a paper funnel. More is not needed, and with more the powder cannot move freely.
+- Seal it: fine powder creeps through small gaps. Put a thin line of glue in the grooves or tape the edges of the window, and glue the end cap on. The sheets are PET, so use super glue or clear silicone sealant, not a solvent-based glue.
+- Print the frame flat and the end cap flat with its plug facing up; no support. The grooves are 2.4 mm high for 2 mm sheets, because the 4 mm overhang above them sags a little when printed.
+- Never put a magnet straight into loose iron powder: fine powder sticks to it and is very hard to get off.
+
 ### Solar panel holder
 
 A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
@@ -138,6 +151,8 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
 | Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
+| Iron powder, 200 g | iron powder viewer | https://amzn.eu/d/0hN4Aijz |
+| OFFCUP clear sheets, 2 mm, 10.2 × 15.2 cm (pack of 11) | iron powder viewer, two per box | https://amzn.eu/d/03hC4ULd |
 | Sol Expert SOL300 solar motor (0.18–6 V, Ø 24.2 mm) | motor with propeller | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
 | Hand crank generator kit, 3–6 V | hand crank generator | https://amzn.eu/d/02YDxxYm |
 | Red push button 12 mm, PBS-33B | push button holder | https://www.tinytronics.nl/nl/schakelaars/manuele-schakelaars/drukknoppen-en-schakelaars/rode-drukknop-12mm-reset-pbs-33b |
