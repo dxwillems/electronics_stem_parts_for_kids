@@ -6,7 +6,9 @@ The ready-made school experiment parts from China turned out to be too small and
 
 As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, so a circuit stays put on the table.
 
-![E10 lamp holder](Lamphouder_E10.png)
+![Printed modules on a LEGO baseplate](fotos/set_op_legoplaat.jpg)
+
+*Printed modules on a LEGO baseplate: LDR, push button, E10 lamp, motor with stand, LED with resistor and the solar panel.*
 
 ## Modules
 
@@ -130,7 +132,7 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 
 ## More modules
 
-All modules in this README have been printed and work, except the battery module, which is drawn but not yet printed.
+All modules in this README have been printed and work, including the push button, the potentiometer and coil v3, except the battery module, which is drawn but not yet printed.
 
 | Module | Files | Notes |
 |---|---|---|
