@@ -123,7 +123,7 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![LED symbol](Ledhouder_5mm_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil](Spoelhouder_V3.png) |
 
 - The symbol is 0.4 mm deep, two layers at 0.2 mm layer height.
-- Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio.Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
+- Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio. Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
 - Single-colour printer: use the STL files in `STL/`. `<module>.stl` is the holder with the symbol engraved 0.4 mm deep; `<module>-Symbool.stl` is the symbol as a separate part, for slicers that combine STL parts.
 - The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed.
 - The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. They print cleanly as two white layers.
@@ -185,7 +185,7 @@ Notes:
 - The underside of every box carries the engraved text "designed by d-x.nl" on the inside of the top plate, mirrored so it reads correctly from below.
 
 - Every printable part is available as a ready-to-print `-Print.3mf` (already in its print position, two colours where there is a symbol) and as STL in the `STL/` folder. The `-Pastest.stl` files are the bottom 6 mm of a box, to check the LEGO fit quickly.
-- Lamp holder and both solar panel holders: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
+- Lamp holder, solar panel holder and the other boxes: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
 - Coil v3: the box prints upside down; the coil tube prints on its side with support only under the tube.
 - All parts are printed in Bambu Lab PLA Basic Blue, and the models and pictures use that colour (#0A2989). Any rigid filament works. The coil dissipates little power at sensible currents, but PLA softens around 60 °C, so do not leave a coil running at high current.
 
