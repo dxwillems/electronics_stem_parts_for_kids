@@ -10,6 +10,8 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 
 ## Modules
 
+Every module clicks onto a LEGO-compatible baseplate; only the iron powder viewer is a loose part.
+
 | Module | Files | Size (mm) | LEGO base | Status |
 |---|---|---|---|---|
 | E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
@@ -18,8 +20,7 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | printed and working |
 | Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | printed and working |
 | Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | printed and working |
-| Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | printed and working |
-| Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
+| Solar panel holder | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | printed and working |
 
 The file names are Dutch: *lamphouder* = lamp holder, *zonnepaneel* = solar panel, *spoel* = coil, *houder* = holder, *bovenaanzicht* / *onderaanzicht* / *onderkant* = top view / bottom view / underside.
 
@@ -104,13 +105,13 @@ A sealed box for iron powder to show magnetic field lines: two clear 2 mm sheets
 
 ### Solar panel holder
 
-A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by side next to the panel. The older plain version (no LEGO base) still has the sockets on ears at opposite corners and a pocket for a 2 mm panel.
+A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by side next to the panel.
 
 | Top | Underside |
 |---|---|
 | ![Solar panel holder](Zonnepaneel_Houder_Lego.png) | ![Bottom view](Zonnepaneel_Houder_Lego_onderaanzicht.png) |
 
-- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel. The plain version has a square pocket and needs glue.
+- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel.
 - Both socket holes sit straight above the open underside, clear of the LEGO clamp rim, so the sockets and nuts can be fitted from below. An earlier version with the sockets on ears made that impossible.
 
 ## Circuit symbols
