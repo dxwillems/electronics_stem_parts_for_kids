@@ -45,8 +45,7 @@ A box for a standard 5 mm LED with its series resistor, made to connect straight
 
 - The LED goes in from underneath through a 5.2 mm hole; its collar sits in a recess under the top plate, so the dome sticks out about 5 mm. A drop of glue behind it stops it being pushed back in.
 - The resistor lies on top, behind its symbol, with its legs through two 1.2 mm holes 10.16 mm apart (the usual pitch for a 1/4 W resistor). Solder the wires to the legs inside the box.
-- Resistor value for a red LED on 5 V: R = (5 V − 2.0 V) / I. 150 Ω gives 20 mA, the LED's rated maximum; **220 Ω** gives about 14 mA, still bright, and leaves margin for a supply slightly above 5 V or an LED with a lower forward voltage. The box says 220 Ω; change `WEERSTAND_TEKST` in `ledhouder.py` for another value or LED colour.
-- Wiring: red socket → resistor → long LED leg (anode); short LED leg (cathode) → black socket. The triangle in the symbol points the same way.
+- Resistor value for a red LED on 5 V: R = (5 V − 2.0 V) / I. 150 Ω gives 20 mA, the LED's rated maximum; **220 Ω** gives about 14 mA, still bright, and leaves margin for a supply slightly above 5 V or an LED with a lower forward voltage.- Wiring: red socket → resistor → long LED leg (anode); short LED leg (cathode) → black socket. The triangle in the symbol points the same way.
 - Both socket nuts sit straight above the open underside (77 × 29 mm).
 
 ### Push button holder
@@ -87,7 +86,7 @@ A box with the motor symbol (a circle with an M) and the two banana sockets, plu
 - Three parts to print: the box (`Motorhouder-Print.3mf`, upside down with the white symbol), the stand (`Motorhouder_Standaard-Print.3mf`, lying flat on its side) and the propeller (`Propeller-Print.3mf`). None need support.
 - The stand is a 7 mm plate with a 24.5 mm hole; three small ribs in the hole squeeze the 24.2 mm motor. A 24 × 7 mm tab under the stand goes 11 mm deep into a slot in the box; fix it with a drop of glue. The motor wires go down behind the stand through a 6 mm hole.
 - The motor axis is 42 mm above the box, so a 70 mm propeller clears the top by 7 mm.
-- The propeller (`propeller.py`) has three blades at 28°, 70 mm across, and a 2 mm hole that presses onto the motor shaft. The blades stand on their lower edge on the bed, so it prints without support.
+- The propeller has three blades at 28°, 70 mm across, and a 2 mm hole that presses onto the motor shaft. The blades stand on their lower edge on the bed, so it prints without support.
 - The SOL300 starts at 8 mA, so it runs from the solar panel, the hand crank generator, batteries or 5 V. Swapping the leads reverses the motor, and the propeller then blows the other way.
 - Not yet measured on the real motor: its length and the length of its shaft.
 
@@ -122,12 +121,11 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 |---|---|---|---|
 | ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![LED symbol](Ledhouder_5mm_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil](Spoelhouder_V3.png) |
 
-- The symbol is 0.4 mm deep, two layers at 0.2 mm layer height. Change `SYMBOOL_DIEPTE` in the script for another layer height, or set it to 0 for no symbol.
-- Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio. It holds one object with two parts (holder on filament 4 = blue, symbol on filament 2 = white; change `FILAMENT_HOUDER` and `FILAMENT_SYMBOOL` in `maak_3mf.py` for another AMS layout), already turned into its print position. Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
-- The `.step` file of each of these modules also contains both bodies, for use in other software. `maak_3mf.py` regenerates the `-Print.3mf` files after a model script has been re-run.
+- The symbol is 0.4 mm deep, two layers at 0.2 mm layer height.
+- Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio.Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
+- Single-colour printer: use the STL files in `STL/`. `<module>.stl` is the holder with the symbol engraved 0.4 mm deep; `<module>-Symbool.stl` is the symbol as a separate part, for slicers that combine STL parts.
 - The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed.
 - The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. They print cleanly as two white layers.
-- The shapes come from `symbolen.py`, which the model scripts import; keep it in the same folder. The plain solar panel holder has no symbol.
 
 ## More modules
 
@@ -144,7 +142,7 @@ All modules in this README have been printed and work, except the battery module
 
 ## Role labels
 
-`labels/` holds three SVG labels for a Cricut (print then cut, or vinyl), made by `maak_labels.py`:
+`labels/` holds three SVG labels for a Cricut (print then cut, or vinyl):
 **1 BRON** (yellow, "max. 1 bron aansluiten"), **2 REGELAAR** (white, "nooit zonder verbruiker") and **3 VERBRUIKER** (green, "min. 1 verbruiker aansluiten"). A circuit always needs at least one source and one consumer; a controller is optional.
 
 ## Parts to buy
@@ -164,30 +162,28 @@ All modules in this README have been printed and work, except the battery module
 | Hand crank generator kit, 3–6 V | hand crank generator | https://amzn.eu/d/02YDxxYm |
 | Red push button 12 mm, PBS-33B | push button holder | https://www.tinytronics.nl/nl/schakelaars/manuele-schakelaars/drukknoppen-en-schakelaars/rode-drukknop-12mm-reset-pbs-33b |
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
-| 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | – |
+| 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | https://amzn.eu/d/09S5gH5t |
 | Screws 2.9 mm self-tapping or M3, 6–8 mm | lamp holder, two | – |
 
 ### Conrad order for the next modules
 
-Ordered from Conrad for the planned dimmer, buzzer and light sensor modules, and for the motor module. The dimmer uses one wirewound potentiometer for both the E10 lamp and the LED module. Prices are what Conrad charged at the time of ordering, including VAT.
+Ordered from Conrad for the dimmer and light sensor modules, and for the motor module. The dimmer uses one wirewound potentiometer for both the E10 lamp and the LED module. Prices are what Conrad charged at the time of ordering, including VAT.
 
 | Qty | Part | Conrad nr. | For | Unit price | Link |
 |---|---|---|---|---|---|
 | 1 | KYOCERA/AVX 3104604002 wirewound potentiometer, 100 Ω, 4 W, linear, 6 mm shaft, M10 thread | 2827033 | dimmer: dims the E10 lamp and, a little, the LED module (max 0.2 A) | € 12.99 | https://www.conrad.nl/nl/p/kyocera-avx-3104604002-3104604002-draadpotmeter-mono-4-w-100-1-stuk-s-2827033.html |
-| 5 | TRU COMPONENTS TC-9202060 active buzzer, 5 V DC, continuous tone, 85 dB, Ø 12 × 9 mm | 2300515 | buzzer module | € 0.97 | https://www.conrad.nl/nl/p/tru-components-tc-9202060-miniatuurzoemer-geluidsontwikkeling-85-db-spanning-5-v-dc-continu-1-stuk-s-2300515.html |
 | 3 | LUNA Optoelectronics PDV-P8103 light dependent resistor (LDR), 16–33 kΩ at 10 lux | 1762910 | light sensor module | € 1.79 | https://www.conrad.nl/nl/p/luna-optoelectronics-pdv-p8103-fotoweerstand-ldr-tht-1-stuk-s-150-v-max-l-x-b-x-h-4-29-x-5-08-x-2-mm-1762910.html |
 | 4 | Sol Expert SOL300 solar motor, 0.18–6 V, starts at 8 mA, Ø 24.2 mm | 1371438 | motor with propeller | € 2.29 | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
 
 Notes:
 - The 100 Ω wirewound potentiometer can carry about 0.2 A (√(4 W / 100 Ω)). Use E10 bulbs of 0.2 A or less with it; for 0.3 A bulbs the 50 Ω version (Conrad 444782) is the safe choice.
-- The buzzer is polarised: + to the red socket.
 - Put the LDR in series with something (for example the LED module), never straight across the supply.
 
 ## Printing
 
 - The underside of every box carries the engraved text "designed by d-x.nl" on the inside of the top plate, mirrored so it reads correctly from below.
 
-- Each module has a `.step` file of just the printable holder. The lamp holder also has `Lamphouder_E10-Pastest.step`, a 6 mm test slice for checking the LEGO fit. The `.FCStd` files also contain dummy sockets, nuts, the panel or bulb base, and a piece of baseplate for checking the fit; do not print those.
+- Every printable part is available as a ready-to-print `-Print.3mf` (already in its print position, two colours where there is a symbol) and as STL in the `STL/` folder. The `-Pastest.stl` files are the bottom 6 mm of a box, to check the LEGO fit quickly.
 - Lamp holder and both solar panel holders: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
 - Coil v3: the box prints upside down; the coil tube prints on its side with support only under the tube.
 - All parts are printed in Bambu Lab PLA Basic Blue, and the models and pictures use that colour (#0A2989). Any rigid filament works. The coil dissipates little power at sensible currents, but PLA softens around 60 °C, so do not leave a coil running at high current.
@@ -198,7 +194,7 @@ The underside has a channel that grips the outer row of studs between the outer 
 
 A first print of the lamp holder with a plain, slightly wider channel slid over the studs but did not hold, which is why the ribs were added. The lamp holder has a rib at every stud along its sides (24 ribs). The LEGO solar panel holder is much larger and has one at every second stud (26 ribs), so it does not become too hard to press on.
 
-The fit depends on your printer. Print the test slice first (`Lamphouder_E10-Pastest.step` or `Zonnepaneel_Houder_Lego-Pastest.step`): it is only the bottom 6 mm and prints quickly. If it is too loose or too tight, change `KLEMRIB_OVERMAAT` at the top of the script (larger is tighter) and re-run it. For the solar panel holder you can also change `KLEMRIB_OM_DE` (1 puts a rib at every stud).
+The fit depends on your printer. Print the test slice first (for example `STL/Lamphouder_E10-Pastest.stl`): it is only the bottom 6 mm and prints quickly. If the fit is too loose or too tight for your printer, open an issue and the clamp ribs can be adjusted.
 
 ## Measure before you print
 
@@ -213,31 +209,13 @@ Only some dimensions come from product listings; the rest are estimates from pho
 | E10 bracket length | 41 mm | listing |
 | E10 bracket hole spacing | 32 mm centre to centre | estimated from the photo |
 
-## Changing a design
-
-Every module is generated by a FreeCAD Python script with all dimensions as named values at the top:
-
-| Script | Generates |
-|---|---|
-| `lamphouder_e10.py` | E10 lamp holder (`LEGO = False` gives a plain open underside) |
-| `zonnepaneel_houder_lego.py` | Solar panel holder with LEGO base |
-| `zonnepaneel_houder.py` | Solar panel holder, plain |
-
-Edit the values, then run the script in FreeCAD (Macro → Macros…) or from a terminal:
-
-```bash
-/Applications/FreeCAD.app/Contents/MacOS/FreeCAD lamphouder_e10.py
-```
-
-It rewrites the `.FCStd`, the `.step` and the pictures next to the script. The shapes in the `.FCStd` files are plain solids without a feature history, so change dimensions in the script rather than in FreeCAD. Made with FreeCAD 1.1.
-
 ## Safety
 
 These modules are for low-voltage experiments only: batteries, small solar panels and current-limited bench supplies. Never connect them to mains voltage.
 
 ## Licence
 
-The designs, scripts and documentation in this repository are © Dave Willems and licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, print, change and share them, also commercially, as long as you give credit and share your changes under the same licence. The full text is in [LICENSE](LICENSE).
+The designs and documentation in this repository are © Dave Willems and licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, print, change and share them, also commercially, as long as you give credit and share your changes under the same licence. The full text is in [LICENSE](LICENSE).
 
 ---
 

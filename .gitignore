@@ -19,3 +19,8 @@ spoelhouder_v2.py
 vierkante_spoel-Spoelkoker.step
 wikkelhulp.py
 wikkelhulp_v2.py
+
+# Bronbestanden blijven lokaal: op GitHub alleen 3MF, STL, plaatjes en labels
+*.py
+*.FCStd
+*.step
