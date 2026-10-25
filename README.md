@@ -238,7 +238,7 @@ These modules are for low-voltage experiments only: batteries, small solar panel
 
 ## Licence
 
-The designs and documentation in this repository are © Dave Willems and licensed under [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You may copy, print, change and share them, also commercially, as long as you give credit and share your changes under the same licence. The full text is in [LICENSE](LICENSE).
+The designs and documentation in this repository are © Dave Willems and licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/). You may copy, print, change and share them for non-commercial use, as long as you give credit and share your changes under the same licence. Selling the designs or prints made from them is not allowed without permission. The full text is in [LICENSE](LICENSE).
 
 ---
 
