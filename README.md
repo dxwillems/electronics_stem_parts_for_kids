@@ -12,13 +12,13 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 
 | Module | Files | Size (mm) | LEGO base | Status |
 |---|---|---|---|---|
-| E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
-| 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | drawn, not yet test-printed |
-| Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
-| Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | drawn, not yet test-printed |
-| Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | drawn, not yet test-printed |
-| Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | drawn, not yet test-printed |
-| Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
+| E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
+| 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | printed and working |
+| Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
+| Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | printed and working |
+| Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | printed and working |
+| Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | printed and working |
+| Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | printed and working |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
 
 The file names are Dutch: *lamphouder* = lamp holder, *zonnepaneel* = solar panel, *spoel* = coil, *houder* = holder, *bovenaanzicht* / *onderaanzicht* / *onderkant* = top view / bottom view / underside.
@@ -111,7 +111,7 @@ A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by sid
 |---|---|
 | ![Solar panel holder](Zonnepaneel_Houder_Lego.png) | ![Bottom view](Zonnepaneel_Houder_Lego_onderaanzicht.png) |
 
-- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel. This fit has not been confirmed with a print; a drop of glue still works as a backup. The plain version has a square pocket and needs glue.
+- The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel. The plain version has a square pocket and needs glue.
 - Both socket holes sit straight above the open underside, clear of the LEGO clamp rim, so the sockets and nuts can be fitted from below. An earlier version with the sockets on ears made that impossible.
 
 ## Circuit symbols
@@ -126,17 +126,19 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 - Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio. It holds one object with two parts (holder on filament 4 = blue, symbol on filament 2 = white; change `FILAMENT_HOUDER` and `FILAMENT_SYMBOOL` in `maak_3mf.py` for another AMS layout), already turned into its print position. Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
 - The `.step` file of each of these modules also contains both bodies, for use in other software. `maak_3mf.py` regenerates the `-Print.3mf` files after a model script has been re-run.
 - The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed.
-- The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. This has not been test-printed.
+- The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. They print cleanly as two white layers.
 - The shapes come from `symbolen.py`, which the model scripts import; keep it in the same folder. The plain solar panel holder has no symbol.
 
 ## More modules
+
+All modules in this README have been printed and work, except the battery module, which is drawn but not yet printed.
 
 | Module | Files | Notes |
 |---|---|---|
 | Push button | `Drukknophouder.*` | 12 mm PBS-33B button |
 | Potentiometer | `Potmeterhouder.*` | 100 Ω 4 W wirewound potentiometer, sunk in a recess; separate knob (`Potmeterhouder_Knop-Print.3mf`) clamps with an M3 set screw; shorten the long shaft to about 22 mm |
 | LDR | `LDRhouder.*` | LDR in a small pocket on top; always in series with a consumer |
-| Battery 2 × AA (3 V) | `Batterijhouder_2xAA.*` | open 2 × AA holder in a recess; the crocodile clips can clip onto the socket tabs inside |
+| Battery 2 × AA (3 V) | `Batterijhouder_2xAA.*` | not yet printed; open 2 × AA holder in a recess; the crocodile clips can clip onto the socket tabs inside |
 | Coil v3 | `Spoelhouder_V3.*` | 30 mm coil on a 10.4 mm core with room for an M6 × 35 bolt as iron core. Use it lying in the shallow pocket (iron powder box on the flanges, field from pole to pole) or upright in the well (powder box over one pole, about three times more field at the powder). Sockets in the front, three compass pockets |
 | Winding aid | `Wikkelhulp_V3.*` | one piece with a 1/4" hex shank: wind the coil tube with a cordless screwdriver, no bolt needed |
 
@@ -194,7 +196,7 @@ Notes:
 
 The underside has a channel that grips the outer row of studs between the outer wall and an inner rib. The channel leaves 0.05 mm clearance per side around a 4.8 mm stud, and small crush ribs on the inner wall each squeeze 0.2 mm into a stud.
 
-A first print of the lamp holder with a plain, slightly wider channel slid over the studs but did not hold, which is why the ribs were added. The lamp holder has a rib at every stud along its sides (24 ribs). The LEGO solar panel holder is much larger and has one at every second stud (26 ribs), so it does not become too hard to press on. This rib fit has not been confirmed with a print yet.
+A first print of the lamp holder with a plain, slightly wider channel slid over the studs but did not hold, which is why the ribs were added. The lamp holder has a rib at every stud along its sides (24 ribs). The LEGO solar panel holder is much larger and has one at every second stud (26 ribs), so it does not become too hard to press on.
 
 The fit depends on your printer. Print the test slice first (`Lamphouder_E10-Pastest.step` or `Zonnepaneel_Houder_Lego-Pastest.step`): it is only the bottom 6 mm and prints quickly. If it is too loose or too tight, change `KLEMRIB_OVERMAAT` at the top of the script (larger is tighter) and re-run it. For the solar panel holder you can also change `KLEMRIB_OM_DE` (1 puts a rib at every stud).
 
