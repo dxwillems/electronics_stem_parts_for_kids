@@ -6,9 +6,7 @@ The ready-made school experiment parts from China turned out to be too small and
 
 As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, so a circuit stays put on the table.
 
-![Printed modules on a LEGO baseplate](fotos/set_op_legoplaat.jpg)
-
-*Printed modules on a LEGO baseplate: LDR, push button, E10 lamp, motor with stand, LED with resistor and the solar panel.*
+![E10 lamp holder](Lamphouder_E10.png)
 
 ## Modules
 
@@ -92,6 +90,28 @@ A box with the motor symbol (a circle with an M) and the two banana sockets, plu
 - The propeller has three blades at 28°, 70 mm across, and a 2 mm hole that presses onto the motor shaft. The blades stand on their lower edge on the bed, so it prints without support.
 - The SOL300 starts at 8 mA, so it runs from the solar panel, the hand crank generator, batteries or 5 V. Swapping the leads reverses the motor, and the propeller then blows the other way.
 - Not yet measured on the real motor: its length and the length of its shaft.
+
+### Potentiometer
+
+A box for the 100 Ω 4 W wirewound potentiometer, which dims the E10 lamp and, a little, the LED module. The potentiometer sits in a 6 mm deep recess so its long shaft sticks out less, and a separate knob clamps onto the shaft.
+
+| View | Top |
+|---|---|
+| ![Potentiometer module with knob](Potmeterhouder.png) | ![Top view with variable resistor symbol](Potmeterhouder_bovenaanzicht.png) |
+
+- Shorten the shaft to about 22 mm from the mounting face, and file a small flat where the M3 set screw of the knob presses, so the knob cannot slip.
+- Connect the middle terminal (wiper) and one outer terminal to the two sockets. Maximum about 0.2 A.
+
+### Coil v3
+
+A coil for 50–100 m of 0.3 mm enamelled wire on a thin 10.4 mm core, with room for an M6 × 35 bolt as iron core. The same coil can be used two ways: lying in the shallow pocket, with the iron powder viewer on top of the flanges (field lines from pole to pole), or upright in the well, with the viewer flat over one pole (about three times more field at the powder).
+
+![Coil v3, lying and upright](Spoelhouder_V3.png)
+
+- The picture shows the coil in both positions at once; you print one coil tube and move it between the pocket and the well.
+- The bolt stands on its head in a recess at the bottom of the well, or lies with its head in the recess at the end of the pocket. Keep it loose, so you can show the difference with and without iron.
+- Three compass pockets (for 19.6 × 3 mm mini compasses) sit next to the poles of the lying coil and behind it. The sockets are in the front, so plugged-in leads stay clear of the viewer.
+- Wind the coil tube with the winding aid (`Wikkelhulp_V3-Print.3mf`) in a cordless screwdriver, always in the same direction.
 
 ### Iron powder viewer
 
