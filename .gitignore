@@ -4,3 +4,18 @@ __pycache__/
 
 # Product photos and shop screenshots from other sellers, kept local only
 Part Pictures and examples/
+
+# Oude spoelversies: alleen lokaal bewaard (op GitHub alleen spoelhouder v3 en wikkelhulp v3)
+Spoel_Electromagneet_Bananenbus*
+Spoel_Electromagneet_Vierkant*
+Spoelhouder_Rond*
+Spoelhouder_V2*
+Wikkelhulp.*
+Wikkelhulp-Print.3mf
+Wikkelhulp_V2*
+spoel_bananenbus.py
+spoelhouder_rond.py
+spoelhouder_v2.py
+vierkante_spoel-Spoelkoker.step
+wikkelhulp.py
+wikkelhulp_v2.py

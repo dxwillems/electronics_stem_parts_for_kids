@@ -1,6 +1,6 @@
 # Electronics STEM parts for kids
 
-3D-printable modules for teaching kids the basics of electronics: a lamp, a solar panel and a coil, each in its own sturdy holder with proper 4 mm banana sockets.
+3D-printable modules for teaching kids the basics of electronics: a lamp, an LED, a solar panel, a coil and more, each in its own sturdy holder with proper 4 mm banana sockets.
 
 The ready-made school experiment parts from China turned out to be too small and too fragile for children's hands, and they use tiny binding posts instead of real connectors. These are redrawn from scratch in FreeCAD: bigger, tougher, and built around standard 4 mm panel-mount banana sockets so normal lab leads plug straight in.
 
@@ -17,12 +17,9 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 | Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | drawn, not yet test-printed |
 | Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | drawn, not yet test-printed |
 | Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | drawn, not yet test-printed |
-| Round coil | `Spoelhouder_Rond.*` | 79.8 × 79.8 × 35.2 box, coil on top | yes, 10 × 10 studs | drawn, not yet test-printed |
 | Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | drawn, not yet test-printed |
 | Solar panel holder (LEGO) | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | drawn, not yet test-printed |
 | Solar panel holder (plain) | `Zonnepaneel_Houder.*` | 166 × 76 × 34 | no | superseded by the LEGO version |
-| Square coil with banana sockets | `Spoel_Electromagneet_Bananenbus.*` | 54 × 59 × 34 | not yet | drawn, not yet test-printed |
-| Square coil, original small style | `Spoel_Electromagneet_Vierkant.FCStd`, `vierkante_spoel-Spoelkoker.step` | 35 × 40 × 10 | no | bobbin only, same size as the original part, no banana sockets |
 
 The file names are Dutch: *lamphouder* = lamp holder, *zonnepaneel* = solar panel, *spoel* = coil, *houder* = holder, *bovenaanzicht* / *onderaanzicht* / *onderkant* = top view / bottom view / underside.
 
@@ -94,18 +91,6 @@ A box with the motor symbol (a circle with an M) and the two banana sockets, plu
 - The SOL300 starts at 8 mA, so it runs from the solar panel, the hand crank generator, batteries or 5 V. Swapping the leads reverses the motor, and the propeller then blows the other way.
 - Not yet measured on the real motor: its length and the length of its shaft.
 
-### Round coil
-
-A round coil for 100 m of 0.3 mm enamelled copper wire on a tube with a 20.4 mm hole, so a bar magnet or an iron rod fits through. The coil clicks into a cradle on a LEGO box with two banana sockets and the coil symbol.
-
-![Round coil](Spoelhouder_Rond.png)
-
-- Three parts: the box (`Spoelhouder_Rond-Print.3mf`, upside down), the cradle (`Spoelhouder_Rond_Wieg-Print.3mf`) and the coil tube with its two square 40 × 40 mm flanges in one piece (`Spoelhouder_Rond_Koker-Print.3mf`). Print the tube on its side with support only under the tube between the flanges. PETG is the better material for the tube and cradle, since it softens at a higher temperature than PLA.
-- The whole 100 m roll gives about 9 layers, 1200 turns and 25 Ω, so it draws about 0.2 A at 5 V. It is safe on the hand crank generator; on a 12 V supply it gets warm within minutes.
-- Each flange has a hole near the core for the start of the winding, a hole just outside the winding for the end, and two holes in a corner to tie down a flexible lead.
-- The coil clicks out of the cradle. Its square flanges let it lie flat, so you can put the iron powder viewer on top of it, or hold it against the viewer, to see the field of a coil. Use flexible leads of about 25 cm to the sockets.
-- The cradle is fixed with four M3 × 8 mm screws (or 2.9 × 9.5 mm self-tapping screws), screwed up from inside the box through the top plate.
-
 ### Iron powder viewer
 
 A sealed box for iron powder to show magnetic field lines: two clear 2 mm sheets with a 4 mm chamber between them, held in a blue frame. Lay a magnet under or on top of it and tap gently.
@@ -129,31 +114,36 @@ A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by sid
 - The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel. This fit has not been confirmed with a print; a drop of glue still works as a backup. The plain version has a square pocket and needs glue.
 - Both socket holes sit straight above the open underside, clear of the LEGO clamp rim, so the sockets and nuts can be fitted from below. An earlier version with the sockets on ears made that impossible.
 
-### Square coil
-
-A square bobbin lying flat, with a terminal box beside it for the two sockets.
-
-![Square coil with banana sockets](Spoel_Electromagneet_Bananenbus.png)
-
-- Sockets are 30 mm apart, to leave room for the coil symbol between them. (An earlier version used the standard 19 mm spacing for dual banana plugs.)
-- Two 2 mm slots in the wall between bobbin and box lead the wire ends to the solder tags.
-- Drawn for 0.8 mm enamelled copper wire, 5 layers of 7 turns (about 35 turns, about 4 m of wire). That is only about 0.14 Ω, close to a short circuit: use a current-limited supply or a series resistor. At 2 A it gives roughly 2.5 mT in the centre.
-- For induction experiments (moving a magnet through the coil) thinner wire with more turns works much better, for example 0.3 mm with 100+ turns.
-
 ## Circuit symbols
 
 Each box has the schematic symbol of its part between the two banana sockets, inlaid flush in the top surface for printing in white: a circle with a cross for the lamp, a resistor and a diode triangle with two arrows for the LED, a circle with an M for the motor, a circle with a cell and two light arrows for the solar panel, and a row of bumps for the coil.
 
 | Lamp | LED | Solar panel | Coil |
 |---|---|---|---|
-| ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![LED symbol](Ledhouder_5mm_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil symbol](Spoel_Electromagneet_Bananenbus_bovenaanzicht.png) |
+| ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![LED symbol](Ledhouder_5mm_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil](Spoelhouder_V3.png) |
 
 - The symbol is 0.4 mm deep, two layers at 0.2 mm layer height. Change `SYMBOOL_DIEPTE` in the script for another layer height, or set it to 0 for no symbol.
 - Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio. It holds one object with two parts (holder on filament 4 = blue, symbol on filament 2 = white; change `FILAMENT_HOUDER` and `FILAMENT_SYMBOOL` in `maak_3mf.py` for another AMS layout), already turned into its print position. Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
 - The `.step` file of each of these modules also contains both bodies, for use in other software. `maak_3mf.py` regenerates the `-Print.3mf` files after a model script has been re-run.
-- The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed. The coil prints upright, so its symbol is in the last two layers.
+- The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed.
 - The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. This has not been test-printed.
 - The shapes come from `symbolen.py`, which the model scripts import; keep it in the same folder. The plain solar panel holder has no symbol.
+
+## More modules
+
+| Module | Files | Notes |
+|---|---|---|
+| Push button | `Drukknophouder.*` | 12 mm PBS-33B button |
+| Potentiometer | `Potmeterhouder.*` | 100 Ω 4 W wirewound potentiometer, sunk in a recess; separate knob (`Potmeterhouder_Knop-Print.3mf`) clamps with an M3 set screw; shorten the long shaft to about 22 mm |
+| LDR | `LDRhouder.*` | LDR in a small pocket on top; always in series with a consumer |
+| Battery 2 × AA (3 V) | `Batterijhouder_2xAA.*` | open 2 × AA holder in a recess; the crocodile clips can clip onto the socket tabs inside |
+| Coil v3 | `Spoelhouder_V3.*` | 30 mm coil on a 10.4 mm core with room for an M6 × 35 bolt as iron core. Use it lying in the shallow pocket (iron powder box on the flanges, field from pole to pole) or upright in the well (powder box over one pole, about three times more field at the powder). Sockets in the front, three compass pockets |
+| Winding aid | `Wikkelhulp_V3.*` | one piece with a 1/4" hex shank: wind the coil tube with a cordless screwdriver, no bolt needed |
+
+## Role labels
+
+`labels/` holds three SVG labels for a Cricut (print then cut, or vinyl), made by `maak_labels.py`:
+**1 BRON** (yellow, "max. 1 bron aansluiten"), **2 REGELAAR** (white, "nooit zonder verbruiker") and **3 VERBRUIKER** (green, "min. 1 verbruiker aansluiten"). A circuit always needs at least one source and one consumer; a controller is optional.
 
 ## Parts to buy
 
@@ -164,8 +154,8 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | E10 bulb base with bracket (41 mm long, two screw holes) | lamp holder | https://amzn.eu/d/00OeK9Ge |
 | E10 bulbs | lamp holder | https://amzn.eu/d/08Ck8Mhr |
 | Red 5 mm LED and a 220 Ω 1/4 W resistor | LED holder | – |
-| Enamelled copper wire 0.3 mm, 100 m | round coil | https://amzn.eu/d/0dwjVQfA |
-| Screws M3 × 8 mm (or 2.9 × 9.5 mm self-tapping), 4 | round coil cradle | – |
+| Enamelled copper wire 0.3 mm, 100 m (50 m is enough) | coil v3 | https://amzn.eu/d/0dwjVQfA |
+| Gebildet 2 × AA battery holders with crocodile clips | battery module | https://amzn.eu/d/0gKbiuqp |
 | Iron powder, 200 g | iron powder viewer | https://amzn.eu/d/0hN4Aijz |
 | OFFCUP clear sheets, 2 mm, 10.2 × 15.2 cm (pack of 11) | iron powder viewer, two per box | https://amzn.eu/d/03hC4ULd |
 | Sol Expert SOL300 solar motor (0.18–6 V, Ø 24.2 mm) | motor with propeller | https://www.conrad.nl/nl/p/sol-expert-90002l-sol300-solarmotor-1371438.html |
@@ -174,7 +164,6 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
 | 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | – |
 | Screws 2.9 mm self-tapping or M3, 6–8 mm | lamp holder, two | – |
-| Enamelled copper wire, 0.8 mm | coil | – |
 
 ### Conrad order for the next modules
 
@@ -198,7 +187,7 @@ Notes:
 
 - Each module has a `.step` file of just the printable holder. The lamp holder also has `Lamphouder_E10-Pastest.step`, a 6 mm test slice for checking the LEGO fit. The `.FCStd` files also contain dummy sockets, nuts, the panel or bulb base, and a piece of baseplate for checking the fit; do not print those.
 - Lamp holder and both solar panel holders: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
-- Coil: print upright. The upper bobbin flange and the roof of the terminal box need support or bridging.
+- Coil v3: the box prints upside down; the coil tube prints on its side with support only under the tube.
 - All parts are printed in Bambu Lab PLA Basic Blue, and the models and pictures use that colour (#0A2989). Any rigid filament works. The coil dissipates little power at sensible currents, but PLA softens around 60 °C, so do not leave a coil running at high current.
 
 ### LEGO fit
@@ -231,7 +220,6 @@ Every module is generated by a FreeCAD Python script with all dimensions as name
 | `lamphouder_e10.py` | E10 lamp holder (`LEGO = False` gives a plain open underside) |
 | `zonnepaneel_houder_lego.py` | Solar panel holder with LEGO base |
 | `zonnepaneel_houder.py` | Solar panel holder, plain |
-| `spoel_bananenbus.py` | Square coil with banana sockets |
 
 Edit the values, then run the script in FreeCAD (Macro → Macros…) or from a terminal:
 
