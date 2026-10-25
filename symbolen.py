@@ -109,6 +109,39 @@ def weerstand(lengte, diepte, breedte=1.0, lang=10.0, hoog=3.6):
     return lijn((-lengte / 2, 0), (-l, 0), breedte, diepte, False).fuse(delen)
 
 
+def regelweerstand(lengte, diepte, breedte=1.0, lang=10.0, hoog=3.6):
+    """Regelbare weerstand (Europees): rechthoekje met een schuine pijl erdoorheen."""
+    vorm = weerstand(lengte, diepte, breedte, lang, hoog)
+    return vorm.fuse(pijl((-lang / 2 - 1.0, -hoog / 2 - 2.5), (lang / 2 + 1.5, hoog / 2 + 3.0), breedte, diepte, 2.2))
+
+
+def ldr(lengte, diepte, breedte=1.0, lang=10.0, hoog=3.6):
+    """Lichtgevoelige weerstand: rechthoekje met twee pijlen die er schuin van boven op wijzen."""
+    vorm = weerstand(lengte, diepte, breedte, lang, hoog)
+    s = math.sqrt(0.5)
+    for x in (-2.0, 2.2):
+        punt = (x, hoog / 2 + 0.9)
+        vorm = vorm.fuse(pijl((punt[0] - 5.0 * s, punt[1] + 5.0 * s), punt, breedte, diepte, 2.2))
+    return vorm
+
+
+def batterij(lengte, diepte, breedte=1.0, cellen=2, hoog=9.0):
+    """Batterij: cellen van een lange dunne plaat (+) en een korte dikke plaat (-), plus links."""
+    stap = 4.0
+    totaal = (cellen - 1) * stap + 2.2
+    x = -totaal / 2
+    delen = []
+    for i in range(cellen):
+        lang_x = x + i * stap
+        delen.append(lijn((lang_x, -hoog / 2), (lang_x, hoog / 2), breedte, diepte))
+        delen.append(lijn((lang_x + 2.2, -hoog / 4), (lang_x + 2.2, hoog / 4), breedte * 1.8, diepte))
+    delen.append(lijn((x + totaal, 0), (lengte / 2, 0), breedte, diepte, False))
+    plus = lijn((-lengte / 2 + 2.5, hoog / 2 - 0.5), (-lengte / 2 + 6.5, hoog / 2 - 0.5), breedte, diepte)
+    plus = plus.fuse(lijn((-lengte / 2 + 4.5, hoog / 2 - 2.5), (-lengte / 2 + 4.5, hoog / 2 + 1.5), breedte, diepte))
+    delen.append(plus)
+    return lijn((-lengte / 2, 0), (x, 0), breedte, diepte, False).fuse(delen)
+
+
 LETTERTYPE = ("/System/Library/Fonts/Supplemental/", "Arial Bold.ttf")
 
 

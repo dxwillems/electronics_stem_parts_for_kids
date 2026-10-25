@@ -22,6 +22,10 @@ MODELLEN = [
     ("Lamphouder_E10", "Houder", "ondersteboven", "Lamphouder_E10"),
     ("Ledhouder_5mm", "Houder", "ondersteboven", "Ledhouder_5mm"),
     ("Drukknophouder", "Houder", "ondersteboven", "Drukknophouder"),
+    ("Batterijhouder_2xAA", "Houder", "ondersteboven", "Batterijhouder_2xAA"),
+    ("Potmeterhouder", "Houder", "ondersteboven", "Potmeterhouder"),
+    ("Potmeterhouder", "Knop", "ondersteboven", "Potmeterhouder_Knop"),
+    ("LDRhouder", "Houder", "ondersteboven", "LDRhouder"),
     ("Handgenerator", "Houder", "ondersteboven", "Handgenerator"),
     ("Motorhouder", "Houder", "ondersteboven", "Motorhouder"),
     ("Motorhouder", "Standaard", "plat", "Motorhouder_Standaard"),
@@ -29,6 +33,14 @@ MODELLEN = [
     ("Spoelhouder_Rond", "Houder", "ondersteboven", "Spoelhouder_Rond"),
     ("Spoelhouder_Rond", "Wieg", "rechtop", "Spoelhouder_Rond_Wieg"),
     ("Spoelhouder_Rond", "Koker", "rechtop", "Spoelhouder_Rond_Koker"),   # op zijn kant, support onder de buis
+    ("Wikkelhulp", "Wikkelhulp", "rechtop", "Wikkelhulp"),
+    ("Spoelhouder_V2", "Houder", "ondersteboven", "Spoelhouder_V2"),
+    ("Spoelhouder_V2", "Wieg", "rechtop", "Spoelhouder_V2_Wieg"),
+    ("Spoelhouder_V2", "Koker", "rechtop", "Spoelhouder_V2_Koker"),   # op zijn kant, support onder de buis
+    ("Wikkelhulp_V2", "Wikkelhulp", "rechtop", "Wikkelhulp_V2"),
+    ("Wikkelhulp_V3", "Wikkelhulp", "plat", "Wikkelhulp_V3"),   # op zijn kant, support onder pen en zeskant
+    ("Spoelhouder_V3", "Houder", "ondersteboven", "Spoelhouder_V3"),
+    ("Spoelhouder_V3", "Koker", "rechtop", "Spoelhouder_V3_Koker"),   # op zijn kant, support onder de buis
     ("IJzerpoeder_Doos", "Frame", "rechtop", "IJzerpoeder_Doos_Frame"),
     ("IJzerpoeder_Doos", "Eindkap", "plat", "IJzerpoeder_Doos_Eindkap"),
     ("Zonnepaneel_Houder_Lego", "Houder", "ondersteboven", "Zonnepaneel_Houder_Lego"),
