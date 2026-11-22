@@ -30,7 +30,6 @@ Every module clicks onto a LEGO-compatible baseplate; only the iron powder viewe
 | Iron powder viewer | `Iron_Powder_Box.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | printed and working |
 | Solar panel holder | `Solar_Panel_Holder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | printed and working |
 
-The role labels in `labels/` are in Dutch (*bron* = source, *regelaar* = controller, *verbruiker* = consumer), because the kids using these modules speak Dutch.
 
 ### E10 lamp holder
 
@@ -175,9 +174,9 @@ All modules in this README have been printed and work, including the push button
 ## Role labels
 
 `labels/` holds three SVG labels for a Cricut (print then cut, or vinyl):
-**1 BRON** (yellow, "max. 1 bron aansluiten"), **2 REGELAAR** (white, "nooit zonder verbruiker") and **3 VERBRUIKER** (green, "min. 1 verbruiker aansluiten"). A circuit always needs at least one source and one consumer; a controller is optional.
+**1 SOURCE** (yellow, "connect max. 1 source"), **2 CONTROLLER** (white, "never without a consumer") and **3 CONSUMER** (green, "connect min. 1 consumer"). A circuit always needs at least one source and one consumer; a controller is optional.
 
-A simpler set is in the same folder: `Label_*_simpel.svg` (only icon, word and number, 44 × 16 mm) and `Labels_simpel_vel.svg`, a sheet with 11 of each that fits the Cricut Print then Cut area.
+A simpler set is in the same folder: `Label_*_simple.svg` (only icon, word and number, 44 × 16 mm) and `Labels_simple_sheet.svg`, a sheet with 11 of each that fits the Cricut Print then Cut area.
 
 ## Parts to buy
 
