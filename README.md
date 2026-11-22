@@ -6,7 +6,7 @@ The ready-made school experiment parts from China turned out to be too small and
 
 As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, so a circuit stays put on the table.
 
-![E10 lamp holder](Lamphouder_E10.png)
+![E10 lamp holder](Lamp_Holder_E10.png)
 
 ## Modules
 
@@ -14,15 +14,15 @@ Every module clicks onto a LEGO-compatible baseplate; only the iron powder viewe
 
 | Module | Files | Size (mm) | LEGO base | Status |
 |---|---|---|---|---|
-| E10 lamp holder | `Lamphouder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
-| 5 mm LED holder | `Ledhouder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | printed and working |
-| Push button holder | `Drukknophouder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
-| Hand crank generator | `Handgenerator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | printed and working |
-| Motor with propeller | `Motorhouder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | printed and working |
-| Iron powder viewer | `IJzerpoeder_Doos.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | printed and working |
-| Solar panel holder | `Zonnepaneel_Houder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | printed and working |
+| E10 lamp holder | `Lamp_Holder_E10.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
+| 5 mm LED holder | `LED_Holder_5mm.*` | 95.8 × 47.8 × 35.2 | yes, 12 × 6 studs | printed and working |
+| Push button holder | `Push_Button_Holder.*` | 63.8 × 63.8 × 35.2 | yes, 8 × 8 studs | printed and working |
+| Hand crank generator | `Hand_Crank_Generator.*` | 127.8 × 79.8 × 35.2 | yes, 16 × 10 studs | printed and working |
+| Motor with propeller | `Motor_Holder.*`, `Propeller.*` | box 63.8 × 63.8 × 35.2, stand 69.5 high | yes, 8 × 8 studs | printed and working |
+| Iron powder viewer | `Iron_Powder_Box.*` | 162.4 × 108.4 × 11.2 (with end cap) | no | printed and working |
+| Solar panel holder | `Solar_Panel_Holder_Lego.*` | 151.8 × 71.8 × 35.2 | yes, 19 × 9 studs | printed and working |
 
-The file names are Dutch: *lamphouder* = lamp holder, *zonnepaneel* = solar panel, *spoel* = coil, *houder* = holder, *bovenaanzicht* / *onderaanzicht* / *onderkant* = top view / bottom view / underside.
+The role labels in `labels/` are in Dutch (*bron* = source, *regelaar* = controller, *verbruiker* = consumer), because the kids using these modules speak Dutch.
 
 ### E10 lamp holder
 
@@ -30,7 +30,7 @@ A square block with an E10 bulb base screwed on top and a red and a black banana
 
 | Top | Bottom |
 |---|---|
-| ![Top view](Lamphouder_E10_bovenaanzicht.png) | ![Bottom view](Lamphouder_E10_onderaanzicht.png) |
+| ![Top view](Lamp_Holder_E10_top_view.png) | ![Bottom view](Lamp_Holder_E10_bottom_view.png) |
 
 - The bulb base is fixed from above with two small screws (2.9 mm self-tapping or M3, 6–8 mm long) into 2.5 mm pilot holes. Under each hole the top plate is thickened so the screw has 8 mm of material.
 - The slot under the bulb base leaves room for its rivet and lets both wires drop into the box. One wire goes to the solder tag (centre contact), the other to the bracket itself, for example under a screw head.
@@ -42,7 +42,7 @@ A box for a standard 5 mm LED with its series resistor, made to connect straight
 
 | View | Top |
 |---|---|
-| ![LED holder](Ledhouder_5mm.png) | ![Top view with circuit](Ledhouder_5mm_bovenaanzicht.png) |
+| ![LED holder](LED_Holder_5mm.png) | ![Top view with circuit](LED_Holder_5mm_top_view.png) |
 
 - The LED goes in from underneath through a 5.2 mm hole; its collar sits in a recess under the top plate, so the dome sticks out about 5 mm. A drop of glue behind it stops it being pushed back in.
 - The resistor lies on top, behind its symbol, with its legs through two 1.2 mm holes 10.16 mm apart (the usual pitch for a 1/4 W resistor). Solder the wires to the legs inside the box.
@@ -55,7 +55,7 @@ A box the same size as the lamp holder for a 12 mm momentary push button (PBS-33
 
 | View | Top |
 |---|---|
-| ![Push button holder](Drukknophouder.png) | ![Top view with push-button symbol](Drukknophouder_bovenaanzicht.png) |
+| ![Push button holder](Push_Button_Holder.png) | ![Top view with push-button symbol](Push_Button_Holder_top_view.png) |
 
 - The button hole is 11.6 mm. The button only allows a 3 mm panel, so the top plate is thinned to 2.4 mm under the button (a 20 mm recess from below) and its nut still fits on the 6 mm thread.
 - The symbol shows two contacts with a bridge above them that the button pushes down; a line runs from each contact to a socket.
@@ -67,7 +67,7 @@ A box for a small hand crank generator (blue gearbox with a motor). The gearbox 
 
 | View | Top |
 |---|---|
-| ![Hand crank generator](Handgenerator.png) | ![Top view with generator symbol](Handgenerator_bovenaanzicht.png) |
+| ![Hand crank generator](Hand_Crank_Generator.png) | ![Top view with generator symbol](Hand_Crank_Generator_top_view.png) |
 
 - The gearbox block (50 × 25.5 × 17.8 mm) sits 8 mm deep in a well with 0.4 mm clearance per side, so it stays upright and cannot twist when you crank.
 - The floor of the well is shaped to the underside of the gearbox: a round opening for the blue collar around the motor, a slot for the 2.2 mm rib that runs along the motor side, and below that a slitted collar around the 24.35 mm motor. A cable tie around that collar clamps the motor. The motor hangs about 3.5 mm past the end of the gearbox, so the well is open at that end.
@@ -75,6 +75,7 @@ A box for a small hand crank generator (blue gearbox with a motor). The gearbox 
 - The crank arm is about 52 mm long; the sockets are placed beyond its reach so plugged-in leads do not get hit.
 - Measured on the real part: block size, collar height, motor diameter and length, how far the motor hangs past the end, rib thickness and crank axis position. Still estimated: the diameter of the blue collar (28 mm; the opening is 29 mm) and the height of the rib.
 - Fast cranking can give well over 6 V, which is too much for the LED module with its 220 Ω resistor; crank gently or use the lamp.
+- A self-resetting 500 mA fuse (PTC) sits in series between the generator and the red socket. Cranking hard into a short circuit could otherwise overheat the motor windings. If it trips, disconnect the leads and wait a minute.
 
 ### Motor with propeller
 
@@ -82,9 +83,9 @@ A box with the motor symbol (a circle with an M) and the two banana sockets, plu
 
 | View | Top of the box |
 |---|---|
-| ![Motor with propeller](Motorhouder.png) | ![Top view with motor symbol](Motorhouder_bovenaanzicht.png) |
+| ![Motor with propeller](Motor_Holder.png) | ![Top view with motor symbol](Motor_Holder_top_view.png) |
 
-- Three parts to print: the box (`Motorhouder-Print.3mf`, upside down with the white symbol), the stand (`Motorhouder_Standaard-Print.3mf`, lying flat on its side) and the propeller (`Propeller-Print.3mf`). None need support.
+- Three parts to print: the box (`Motor_Holder-Print.3mf`, upside down with the white symbol), the stand (`Motor_Holder_Stand-Print.3mf`, lying flat on its side) and the propeller (`Propeller-Print.3mf`). None need support.
 - The stand is a 7 mm plate with a 24.5 mm hole; three small ribs in the hole squeeze the 24.2 mm motor. A 24 × 7 mm tab under the stand goes 11 mm deep into a slot in the box; fix it with a drop of glue. The motor wires go down behind the stand through a 6 mm hole.
 - The motor axis is 42 mm above the box, so a 70 mm propeller clears the top by 7 mm.
 - The propeller has three blades at 28°, 70 mm across, and a 2 mm hole that presses onto the motor shaft. The blades stand on their lower edge on the bed, so it prints without support.
@@ -97,7 +98,7 @@ A box for the 100 Ω 4 W wirewound potentiometer, which dims the E10 lamp and, a
 
 | View | Top |
 |---|---|
-| ![Potentiometer module with knob](Potmeterhouder.png) | ![Top view with variable resistor symbol](Potmeterhouder_bovenaanzicht.png) |
+| ![Potentiometer module with knob](Potentiometer_Holder.png) | ![Top view with variable resistor symbol](Potentiometer_Holder_top_view.png) |
 
 - Shorten the shaft to about 22 mm from the mounting face, and file a small flat where the M3 set screw of the knob presses, so the knob cannot slip.
 - Connect the middle terminal (wiper) and one outer terminal to the two sockets. Maximum about 0.2 A.
@@ -106,18 +107,18 @@ A box for the 100 Ω 4 W wirewound potentiometer, which dims the E10 lamp and, a
 
 A coil for 50–100 m of 0.3 mm enamelled wire on a thin 10.4 mm core, with room for an M6 × 35 bolt as iron core. The same coil can be used two ways: lying in the shallow pocket, with the iron powder viewer on top of the flanges (field lines from pole to pole), or upright in the well, with the viewer flat over one pole (about three times more field at the powder).
 
-![Coil v3, lying and upright](Spoelhouder_V3.png)
+![Coil v3, lying and upright](Coil_Holder_V3.png)
 
 - The picture shows the coil in both positions at once; you print one coil tube and move it between the pocket and the well.
 - The bolt stands on its head in a recess at the bottom of the well, or lies with its head in the recess at the end of the pocket. Keep it loose, so you can show the difference with and without iron.
 - Three compass pockets (for 19.6 × 3 mm mini compasses) sit next to the poles of the lying coil and behind it. The sockets are in the front, so plugged-in leads stay clear of the viewer.
-- Wind the coil tube with the winding aid (`Wikkelhulp_V3-Print.3mf`) in a cordless screwdriver, always in the same direction.
+- Wind the coil tube with the winding aid (`Winding_Aid_V3-Print.3mf`) in a cordless screwdriver, always in the same direction.
 
 ### Iron powder viewer
 
 A sealed box for iron powder to show magnetic field lines: two clear 2 mm sheets with a 4 mm chamber between them, held in a blue frame. Lay a magnet under or on top of it and tap gently.
 
-![Iron powder viewer](IJzerpoeder_Doos.png)
+![Iron powder viewer](Iron_Powder_Box.png)
 
 - Both sheets slide into grooves from the open short side; an end cap closes that side. The end cap is 7 mm wide, the same as the frame border on the other sides.
 - To fill: slide both sheets in, stand the box on its closed end and pour 5–10 g of iron powder through the open side with a paper funnel. More is not needed, and with more the powder cannot move freely.
@@ -131,7 +132,7 @@ A long rectangle for a 110 × 60 × 3 mm panel, with the two sockets side by sid
 
 | Top | Underside |
 |---|---|
-| ![Solar panel holder](Zonnepaneel_Houder_Lego.png) | ![Bottom view](Zonnepaneel_Houder_Lego_onderaanzicht.png) |
+| ![Solar panel holder](Solar_Panel_Holder_Lego.png) | ![Bottom view](Solar_Panel_Holder_Lego_bottom_view.png) |
 
 - The panel goes in from underneath and rests against a 2.5 mm lip that covers its black border. In the LEGO version it clicks in without glue: the back long side has three fixed hooks, the front long side has two catches on flexible tongues (the L-shaped slots you see next to the panel). Tilt the panel, tuck its back edge above the hooks, then press the front edge up until the tongues click. A first version with fixed catches on both sides was too stiff: the panel did not go in. The pocket is 110.7 × 60.8 mm for a panel measured at 110.0 × 60.1 mm, with square corners to match the panel.
 - Both socket holes sit straight above the open underside, clear of the LEGO clamp rim, so the sockets and nuts can be fitted from below. An earlier version with the sockets on ears made that impossible.
@@ -142,11 +143,11 @@ Each box has the schematic symbol of its part between the two banana sockets, in
 
 | Lamp | LED | Solar panel | Coil |
 |---|---|---|---|
-| ![Lamp symbol](Lamphouder_E10_bovenaanzicht.png) | ![LED symbol](Ledhouder_5mm_bovenaanzicht.png) | ![Solar cell symbol](Zonnepaneel_Houder_Lego_bovenaanzicht.png) | ![Coil](Spoelhouder_V3.png) |
+| ![Lamp symbol](Lamp_Holder_E10_top_view.png) | ![LED symbol](LED_Holder_5mm_top_view.png) | ![Solar cell symbol](Solar_Panel_Holder_Lego_top_view.png) | ![Coil](Coil_Holder_V3.png) |
 
 - The symbol is 0.4 mm deep, two layers at 0.2 mm layer height.
 - Easiest way to print in two colours: open the `-Print.3mf` file of the module in OrcaSlicer or Bambu Studio. Do not load the holder and the symbol as two separate objects: the slicer then reports g-code path conflicts, because they occupy the same space.
-- Single-colour printer: use the STL files in `STL/`. `<module>.stl` is the holder with the symbol engraved 0.4 mm deep; `<module>-Symbool.stl` is the symbol as a separate part, for slicers that combine STL parts.
+- Single-colour printer: use the STL files in `STL/`. `<module>.stl` is the holder with the symbol engraved 0.4 mm deep; `<module>-Symbol.stl` is the symbol as a separate part, for slicers that combine STL parts.
 - The lamp and solar panel holders print upside down, so the symbol is in the first two layers on the bed.
 - The symbols are small (the lamp symbol is 9 mm across, lines 1.0 to 1.2 mm wide) because the space between the sockets is limited. They print cleanly as two white layers.
 
@@ -156,17 +157,19 @@ All modules in this README have been printed and work, including the push button
 
 | Module | Files | Notes |
 |---|---|---|
-| Push button | `Drukknophouder.*` | 12 mm PBS-33B button |
-| Potentiometer | `Potmeterhouder.*` | 100 Ω 4 W wirewound potentiometer, sunk in a recess; separate knob (`Potmeterhouder_Knop-Print.3mf`) clamps with an M3 set screw; shorten the long shaft to about 22 mm |
-| LDR | `LDRhouder.*` | LDR in a small pocket on top; always in series with a consumer |
-| Battery 2 × AA (3 V) | `Batterijhouder_2xAA.*` | not yet printed; open 2 × AA holder in a recess; the crocodile clips can clip onto the socket tabs inside |
-| Coil v3 | `Spoelhouder_V3.*` | 30 mm coil on a 10.4 mm core with room for an M6 × 35 bolt as iron core. Use it lying in the shallow pocket (iron powder box on the flanges, field from pole to pole) or upright in the well (powder box over one pole, about three times more field at the powder). Sockets in the front, three compass pockets |
-| Winding aid | `Wikkelhulp_V3.*` | one piece with a 1/4" hex shank: wind the coil tube with a cordless screwdriver, no bolt needed |
+| Push button | `Push_Button_Holder.*` | 12 mm PBS-33B button |
+| Potentiometer | `Potentiometer_Holder.*` | 100 Ω 4 W wirewound potentiometer, sunk in a recess; separate knob (`Potentiometer_Holder_Knob-Print.3mf`) clamps with an M3 set screw; shorten the long shaft to about 22 mm |
+| LDR | `LDR_Holder.*` | LDR in a small pocket on top; always in series with a consumer |
+| Battery 2 × AA (3 V) | `Battery_Holder_2xAA.*` | not yet printed; open 2 × AA holder in a recess; the crocodile clips can clip onto the socket tabs inside; a self-resetting 500 mA fuse (PTC) between the holder's plus and the red socket protects against short circuits |
+| Coil v3 | `Coil_Holder_V3.*` | 30 mm coil on a 10.4 mm core with room for an M6 × 35 bolt as iron core. Use it lying in the shallow pocket (iron powder box on the flanges, field from pole to pole) or upright in the well (powder box over one pole, about three times more field at the powder). Sockets in the front, three compass pockets |
+| Winding aid | `Winding_Aid_V3.*` | one piece with a 1/4" hex shank: wind the coil tube with a cordless screwdriver, no bolt needed |
 
 ## Role labels
 
 `labels/` holds three SVG labels for a Cricut (print then cut, or vinyl):
 **1 BRON** (yellow, "max. 1 bron aansluiten"), **2 REGELAAR** (white, "nooit zonder verbruiker") and **3 VERBRUIKER** (green, "min. 1 verbruiker aansluiten"). A circuit always needs at least one source and one consumer; a controller is optional.
+
+A simpler set is in the same folder: `Label_*_simpel.svg` (only icon, word and number, 44 × 16 mm) and `Labels_simpel_vel.svg`, a sheet with 11 of each that fits the Cricut Print then Cut area.
 
 ## Parts to buy
 
@@ -186,7 +189,11 @@ All modules in this README have been printed and work, including the push button
 | Red push button 12 mm, PBS-33B | push button holder | https://www.tinytronics.nl/nl/schakelaars/manuele-schakelaars/drukknoppen-en-schakelaars/rode-drukknop-12mm-reset-pbs-33b |
 | Dewin solar panel 6 V 1 W, 110 × 60 mm | solar panel holder | https://amzn.eu/d/03TlLYnt |
 | 4 mm panel-mount banana sockets, red and black, 12 mm mounting hole (Cleqee, pack of 10) | all modules, two each | https://amzn.eu/d/09S5gH5t |
+| 6.3 mm female spade connectors, pre-crimped on 15 cm wire, 10 red + 10 black (Gebildet) | all modules: push onto the socket tabs, no soldering on the socket | https://amzn.eu/d/04fp3VyB |
+| Cheaper alternative: 6.3 mm female spade connectors, uninsulated, tinned, 0.5–1.5 mm² (100 pcs), plus 6–8 mm heat-shrink tube | same, solder the wire in yourself | https://www.amazon.nl/platte-steekhulzen-kabelschoen-niet-ge%C3%AFsoleerd-stekker/dp/B07BDQSHJ6 |
 | Screws 2.9 mm self-tapping or M3, 6–8 mm | lamp holder, two | – |
+| Self-resetting fuse PPTC Polyfuse, 500 mA, through hole (bought here, € 1.00 each) | battery module and hand crank generator, one each | https://www.tinytronics.nl/nl/componenten/zekeringen/zelfherstellende-zekering-pptc-polyfuse-500ma-through-hole |
+| Alternative at Conrad: Schurter PFRA.050 Multifuse, 0.5 A hold, 60 V, through hole, Conrad nr. 3306357 (sold per 10, € 0.64 each excl. VAT) | same | https://www.conrad.nl/nl/p/schurter-pfra-050-pfra-050-multifuse-zekering-drempelstroom-i-h-0-5-a-60-v-dc-o-x-h-7-9-mm-x-21-30-mm-1-stuk-s-piece-3306357.html |
 
 ### Conrad order for the next modules
 
@@ -201,12 +208,14 @@ Ordered from Conrad for the dimmer and light sensor modules, and for the motor m
 Notes:
 - The 100 Ω wirewound potentiometer can carry about 0.2 A (√(4 W / 100 Ω)). Use E10 bulbs of 0.2 A or less with it; for 0.3 A bulbs the 50 Ω version (Conrad 444782) is the safe choice.
 - Put the LDR in series with something (for example the LED module), never straight across the supply.
+- The banana sockets have a flat 6.3 × 0.8 mm tab that is hard to solder. Any 6.3 mm female spade connector (the kind used in cars, also called Faston) fits, crimped or soldered. To solder an uninsulated one: slide heat-shrink tube over the wire, squeeze the wire grip lightly shut, solder only at the wire grip (keep solder off the front, or it no longer slides onto the tab), then shrink the tube over it. The fuse leg can be soldered into the same wire grip.
+- Only the battery module and the hand crank generator need a fuse. A short circuit on fresh AA batteries gives 5–10 A. The 6 V 1 W solar panel limits its own current to about 0.2 A, so it needs no fuse.
 
 ## Printing
 
 - The underside of every box carries the engraved text "designed by d-x.nl" on the inside of the top plate, mirrored so it reads correctly from below.
 
-- Every printable part is available as a ready-to-print `-Print.3mf` (already in its print position, two colours where there is a symbol) and as STL in the `STL/` folder. The `-Pastest.stl` files are the bottom 6 mm of a box, to check the LEGO fit quickly.
+- Every printable part is available as a ready-to-print `-Print.3mf` (already in its print position, two colours where there is a symbol) and as STL in the `STL/` folder. The `-Fit_Test.stl` files are the bottom 6 mm of a box, to check the LEGO fit quickly.
 - Lamp holder, solar panel holder and the other boxes: print **upside down** (top face on the bed). No support needed; the LEGO clamp rim blends into the wall at 45°.
 - Coil v3: the box prints upside down; the coil tube prints on its side with support only under the tube.
 - All parts are printed in Bambu Lab PLA Basic Blue, and the models and pictures use that colour (#0A2989). Any rigid filament works. The coil dissipates little power at sensible currents, but PLA softens around 60 °C, so do not leave a coil running at high current.
@@ -217,7 +226,7 @@ The underside has a channel that grips the outer row of studs between the outer 
 
 A first print of the lamp holder with a plain, slightly wider channel slid over the studs but did not hold, which is why the ribs were added. The lamp holder has a rib at every stud along its sides (24 ribs). The LEGO solar panel holder is much larger and has one at every second stud (26 ribs), so it does not become too hard to press on.
 
-The fit depends on your printer. Print the test slice first (for example `STL/Lamphouder_E10-Pastest.stl`): it is only the bottom 6 mm and prints quickly. If the fit is too loose or too tight for your printer, open an issue and the clamp ribs can be adjusted.
+The fit depends on your printer. Print the test slice first (for example `STL/Lamp_Holder_E10-Fit_Test.stl`): it is only the bottom 6 mm and prints quickly. If the fit is too loose or too tight for your printer, open an issue and the clamp ribs can be adjusted.
 
 ## Measure before you print
 
