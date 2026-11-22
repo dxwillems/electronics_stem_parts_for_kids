@@ -2,7 +2,7 @@
 
 3D-printable modules for teaching kids the basics of electronics: a lamp, an LED, a solar panel, a coil and more, each in its own sturdy holder with proper 4 mm banana sockets.
 
-The ready-made school experiment parts from China turned out to be too small and too fragile for children's hands, and they use tiny binding posts instead of real connectors. These are redrawn from scratch in FreeCAD: bigger, tougher, and built around standard 4 mm panel-mount banana sockets so normal lab leads plug straight in.
+In the early 1990s I got an electronics kit from my grandpa with sturdy modules that could take some rough handling. That is how I learned how a circuit works, and I wanted the same for the kids in my family. Today's cheap school kits turned out to be small and fragile, with tiny binding posts instead of real connectors, so I designed my own from scratch in FreeCAD: big, tough, and built around standard 4 mm panel-mount banana sockets so normal lab leads plug straight in.
 
 As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, so a circuit stays put on the table.
 
