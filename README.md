@@ -8,6 +8,14 @@ As a bonus, the modules are designed to click onto a LEGO-compatible baseplate, 
 
 ![E10 lamp holder](Lamp_Holder_E10.png)
 
+### The modules in use
+
+On the table, and clicked onto a LEGO wall: battery, push button, motor with propeller, LED and potentiometer.
+
+| On the table | On a LEGO wall | |
+|---|---|---|
+| ![Modules on the table](photos/Modules_on_the_table.jpg) | ![Modules on a LEGO wall](photos/Modules_on_a_LEGO_wall_1.jpg) | ![Modules on a LEGO wall, propeller spinning](photos/Modules_on_a_LEGO_wall_2.jpg) |
+
 ## Modules
 
 Every module clicks onto a LEGO-compatible baseplate; only the iron powder viewer is a loose part.
